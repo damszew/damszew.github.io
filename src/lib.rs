@@ -1,118 +1,80 @@
 use seed::{prelude::*, *};
 
 struct Model {
-    pub val: i32,
+    sidebar: bool,
+    page: Page,
 }
 
 impl Default for Model {
     fn default() -> Self {
-        Self { val: 0 }
+        Self {
+            sidebar: true,
+            page: Page::AboutMe,
+        }
     }
 }
 
 #[derive(Clone)]
+enum Page {
+    AboutMe,
+    Projects,
+    Contact,
+}
+
+#[derive(Clone)]
 enum Msg {
-    Increment,
+    ToggleSidebar,
+    ChangePage(Page),
 }
 
 fn update(msg: Msg, model: &mut Model, _: &mut impl Orders<Msg>) {
     match msg {
-        Msg::Increment => model.val += 1,
+        Msg::ToggleSidebar => model.sidebar = !model.sidebar,
+        Msg::ChangePage(page) => model.page = page,
     }
 }
 
 fn view(model: &Model) -> impl View<Msg> {
     vec![
+        // Sidebar
         div![
-            attrs!{
-                At::Class => "container",
-            },
-            header![
-
-                // logo
-                a![ attrs!{At::Href => "/", At::Label => "Go back to homepage"},
-                    div![
-                        style![
-                            St::Width => px(110),
-                            St::Margin => "auto",
-                        ],
-                        svg![
-                            // todo
-                        ]
-                    ]
-                ],
-
-
-
-
-
-                p![ attrs!{ At::Class => "bio" },
-                    span![
-                        "Personal website of Damian Szewczyk, a beginner rustacean with passion to learn about new technologies. "
-                    ],
-                    a![ attrs!{At::Href => "/about"}, "About me."]
-                ],
-
-
-
-
-                nav![
+            attrs![ At::Class => "sidebar" ],
+            button![
+                attrs![At::Class => "menu-icon"],
+                simple_ev(Ev::Click, Msg::ToggleSidebar),
+                "☰"
+            ],
+            if model.sidebar {
+                div![
+                    attrs![ At::Class => "menu" ],
                     ul![
-                        li![
-                            a![
-                                attrs!{
-                                    At::Class => "icon",
-                                    At::Href => "/",
-                                    At::Title => "Go to homepage",
-                                    //aria-label
-                                },
-                                svg![
-                                    attrs!{
-                                        At::ViewBox => "0 0 61 58"
-                                    }
-                                ]
-                            ]
-                        ],
-                        li![],
-                        li![],
+                        li![a![
+                            attrs![ At::Href => "#about_me" ],
+                            simple_ev(Ev::Click, Msg::ChangePage(Page::AboutMe)),
+                            "About Me"
+                        ]],
+                        li![a![
+                            attrs![ At::Href => "#projects" ],
+                            simple_ev(Ev::Click, Msg::ChangePage(Page::Projects)),
+                            "Pet projects"
+                        ]],
+                        li![a![
+                            attrs![ At::Href => "#contact" ],
+                            simple_ev(Ev::Click, Msg::ChangePage(Page::Contact)),
+                            "Contact"
+                        ]],
                     ]
                 ]
-            ],
-
-            main![
-                    article![ attrs!{ At::Class => "homepage" },
-                        p![ attrs!{ At::Class => "post-meta" },
-                            "4th of February, 2020"
-                        ],
-                        a![ attrs!{ At::Href => "/link" },
-                            h1![ "A Timelapse of Timelapse" ]
-                        ],
-                        "Timelapse is a little open-source screen recorder for macOS. It takes a screenshot every second and creates a
-                        movie in the end. To celebrate its unlikely 1.0 release today, I present here a timelapse of this project's
-                        journey. It just took ten years to get here. ",
-                        a![ attrs!{ At::Href => "/link" }, "More »" ]
-                    ]
-            ],
+            } else {
+                div![]
+            }
         ],
-
-        footer![
-            div![
-                attrs!{
-                    At::Class => "body"
-                },
-
-                // for each footer div
-                div![
-                    h2![a![
-                        attrs!{ At::Href => "/about" },
-                        "About me"
-                    ]],
-                    p![
-                        "Some more text about me..."
-                    ],
-                ],
-            ]
-        ]
+        // Pages
+        div![match model.page {
+            Page::AboutMe => "AboutMe",
+            Page::Projects => "Projects",
+            Page::Contact => "Contact",
+        }],
     ]
 }
 

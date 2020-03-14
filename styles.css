@@ -1,23 +1,67 @@
-body {
-	padding-left: 11em;
-	color: purple;
-	background-color: #d8da3d
-}
+/* The side navigation menu */
 
 .sidebar {
-	position: absolute;
-	top: 2em;
-	left: 1em;
-	width: 9em;
+	margin: 0;
+	padding: 0;
+	width: 200px;
+	background-color: #f1f1f1;
+	position: fixed;
+	height: 100%;
+	overflow: auto;
 }
 
-.sidebar li {
-	background: white;
-	margin: 0.5em 0;
-	padding: 0.3em;
-	border-right: 1em solid black
+/* Sidebar links */
+
+.sidebar a {
+	display: block;
+	color: black;
+	padding: 16px;
+	text-decoration: none;
 }
 
-.sidebar li:hover {
-	border-bottom: 2px solid black
+/* Active/current link */
+
+.sidebar a.active {
+	background-color: #4CAF50;
+	color: white;
+}
+
+/* Links on mouse-over */
+
+.sidebar a:hover:not(.active) {
+	background-color: #555;
+	color: white;
+}
+
+/* Page content. The value of the margin-left property should match the value of the sidebar's width property */
+
+div.content {
+	margin-left: 200px;
+	padding: 1px 16px;
+	height: 1000px;
+}
+
+/* On screens that are less than 700px wide, make the sidebar into a topbar */
+
+@media screen and (max-width: 700px) {
+	.sidebar {
+		width: 100%;
+		height: auto;
+		position: relative;
+	}
+	.sidebar a {
+		float: left;
+	}
+	div.content {
+		margin-left: 0;
+	}
+}
+
+/* On screens that are less than 400px, display the bar vertically, instead of horizontally */
+
+@media screen and (max-width: 400px) {
+	.sidebar a {
+		text-align: center;
+		float: none;
+	}
 }

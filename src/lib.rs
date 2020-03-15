@@ -2,7 +2,7 @@ use seed::{prelude::*, *};
 
 mod page;
 
-struct Model {
+pub struct Model {
     page: Page,
 }
 
@@ -31,29 +31,9 @@ fn update(msg: Msg, model: &mut Model, _: &mut impl Orders<Msg>) {
     }
 }
 
-fn sidebar_view(model: &Model) -> impl View<Msg> {
-    let current_page = &model.page;
-
-    div![
-        attrs![ At::Class => "sidebar" ],
-        div![
-            a![
-                attrs![ At::Href => "#projects", At::Class => if let Page::Projects = current_page { "active" } else { "" } ],
-                simple_ev(Ev::Click, Msg::ChangePage(Page::Projects)),
-                "My projects"
-            ],
-            a![
-                attrs![ At::Href => "#about_me", At::Class => if let Page::AboutMe = current_page { "active" } else { "" } ],
-                simple_ev(Ev::Click, Msg::ChangePage(Page::AboutMe)),
-                "About Me"
-            ],
-        ]
-    ]
-}
-
 fn view(model: &Model) -> impl View<Msg> {
     div![
-        sidebar_view(model).els(),
+        page::partial::sidebar::view(model).els(),
         // Pages
         div![
             attrs![ At::Class => "content" ],

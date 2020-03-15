@@ -1,5 +1,7 @@
 use seed::{prelude::*, *};
 
+mod page;
+
 struct Model {
     page: Page,
 }
@@ -13,13 +15,13 @@ impl Default for Model {
 }
 
 #[derive(Clone)]
-enum Page {
+pub enum Page {
     AboutMe,
     Projects,
 }
 
 #[derive(Clone)]
-enum Msg {
+pub enum Msg {
     ChangePage(Page),
 }
 
@@ -29,17 +31,19 @@ fn update(msg: Msg, model: &mut Model, _: &mut impl Orders<Msg>) {
     }
 }
 
-fn sidebar_view() -> Node<Msg> {
+fn sidebar_view(model: &Model) -> impl View<Msg> {
+    let current_page = &model.page;
+
     div![
         attrs![ At::Class => "sidebar" ],
         div![
             a![
-                attrs![ At::Href => "#projects", At::Class => "active" ],
+                attrs![ At::Href => "#projects", At::Class => if let Page::Projects = current_page { "active" } else { "" } ],
                 simple_ev(Ev::Click, Msg::ChangePage(Page::Projects)),
                 "My projects"
             ],
             a![
-                attrs![ At::Href => "#about_me" ],
+                attrs![ At::Href => "#about_me", At::Class => if let Page::AboutMe = current_page { "active" } else { "" } ],
                 simple_ev(Ev::Click, Msg::ChangePage(Page::AboutMe)),
                 "About Me"
             ],
@@ -47,15 +51,15 @@ fn sidebar_view() -> Node<Msg> {
     ]
 }
 
-fn view(model: &Model) -> Vec<Node<Msg>> {
-    vec![
-        sidebar_view(),
+fn view(model: &Model) -> impl View<Msg> {
+    div![
+        sidebar_view(model).els(),
         // Pages
         div![
             attrs![ At::Class => "content" ],
             match model.page {
-                Page::Projects => "Projects",
-                Page::AboutMe => "AboutMe",
+                Page::Projects => page::projects::view().els(),
+                Page::AboutMe => page::about::view().els(),
             }
         ],
     ]

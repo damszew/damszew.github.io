@@ -20,6 +20,15 @@ pub enum Page {
     Projects,
 }
 
+impl Page {
+    fn to_href(self) -> &'static str {
+        match self {
+            Self::AboutMe => "#about_me",
+            Self::Projects => "#projects",
+        }
+    }
+}
+
 #[derive(Clone)]
 pub enum Msg {
     ChangePage(Page),

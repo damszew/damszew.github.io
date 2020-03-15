@@ -7,7 +7,7 @@ struct Model {
 impl Default for Model {
     fn default() -> Self {
         Self {
-            page: Page::AboutMe,
+            page: Page::Projects,
         }
     }
 }
@@ -16,7 +16,6 @@ impl Default for Model {
 enum Page {
     AboutMe,
     Projects,
-    Contact,
 }
 
 #[derive(Clone)]
@@ -35,19 +34,14 @@ fn sidebar_view() -> Node<Msg> {
         attrs![ At::Class => "sidebar" ],
         div![
             a![
-                attrs![ At::Href => "#about_me", At::Class => "active" ],
+                attrs![ At::Href => "#projects", At::Class => "active" ],
+                simple_ev(Ev::Click, Msg::ChangePage(Page::Projects)),
+                "My projects"
+            ],
+            a![
+                attrs![ At::Href => "#about_me" ],
                 simple_ev(Ev::Click, Msg::ChangePage(Page::AboutMe)),
                 "About Me"
-            ],
-            a![
-                attrs![ At::Href => "#projects" ],
-                simple_ev(Ev::Click, Msg::ChangePage(Page::Projects)),
-                "Pet projects"
-            ],
-            a![
-                attrs![ At::Href => "#contact" ],
-                simple_ev(Ev::Click, Msg::ChangePage(Page::Contact)),
-                "Contact"
             ],
         ]
     ]
@@ -60,9 +54,8 @@ fn view(model: &Model) -> Vec<Node<Msg>> {
         div![
             attrs![ At::Class => "content" ],
             match model.page {
-                Page::AboutMe => "AboutMe",
                 Page::Projects => "Projects",
-                Page::Contact => "Contact",
+                Page::AboutMe => "AboutMe",
             }
         ],
     ]

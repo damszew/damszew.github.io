@@ -4,12 +4,14 @@ mod page;
 
 pub struct Model {
     page: Page,
+    posts: page::projects::Model,
 }
 
 impl Default for Model {
     fn default() -> Self {
         Self {
             page: Page::Projects,
+            posts: Default::default(),
         }
     }
 }
@@ -47,7 +49,7 @@ fn view(model: &Model) -> impl View<Msg> {
         div![
             attrs![ At::Class => "content" ],
             match model.page {
-                Page::Projects => page::projects::view().els(),
+                Page::Projects => page::projects::view(&model.posts).els(),
                 Page::AboutMe => page::about::view().els(),
             }
         ],

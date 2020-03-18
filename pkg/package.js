@@ -1289,6 +1289,14 @@ async function init(input) {
     imports.wbg.__wbindgen_throw = function(arg0, arg1) {
         throw new Error(getStringFromWasm0(arg0, arg1));
     };
+    imports.wbg.__wbindgen_closure_wrapper1187 = function(arg0, arg1, arg2) {
+        try {
+            var ret = makeMutClosure(arg0, arg1, 16, __wbg_adapter_20);
+            return addHeapObject(ret);
+        } catch (e) {
+            logError(e)
+        }
+    };
     imports.wbg.__wbindgen_closure_wrapper1189 = function(arg0, arg1, arg2) {
         try {
             var ret = makeMutClosure(arg0, arg1, 18, __wbg_adapter_26);
@@ -1300,14 +1308,6 @@ async function init(input) {
     imports.wbg.__wbindgen_closure_wrapper6208 = function(arg0, arg1, arg2) {
         try {
             var ret = makeMutClosure(arg0, arg1, 131, __wbg_adapter_23);
-            return addHeapObject(ret);
-        } catch (e) {
-            logError(e)
-        }
-    };
-    imports.wbg.__wbindgen_closure_wrapper1187 = function(arg0, arg1, arg2) {
-        try {
-            var ret = makeMutClosure(arg0, arg1, 16, __wbg_adapter_20);
             return addHeapObject(ret);
         } catch (e) {
             logError(e)

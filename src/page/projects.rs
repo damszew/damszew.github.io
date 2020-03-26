@@ -30,18 +30,25 @@ impl Post {
     fn new() -> Self {
         Self {
             title: "Project title".into(),
-            image: "https://via.placeholder.com/150".into(),
-            description: "Short description".into(),
+            image: "https://via.placeholder.com/1920x1080".into(),
+            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus eget blandit nisi. Nulla pretium feugiat lorem. Fusce enim nibh, auctor in diam quis, facilisis semper nibh. Pellentesque vestibulum turpis ut dui pretium, sit amet finibus mi placerat. Phasellus interdum pharetra ipsum, id euismod dui eleifend quis.".into(),
             link: "some link".into(),
         }
     }
 
     fn to_html(&self) -> Node<Msg> {
         article![
-            img![attrs!(At::Src => self.image)],
-            h1![self.title],
-            self.description,
-            a![self.link]
+            attrs!(At::Class => "clearfix container"),
+            img![attrs!(At::Src => self.image, At::Class => "box1")],
+            div![
+                attrs!(At::Class => "box2"),
+                h1![self.title],
+                p![self.description],
+                a![
+                    attrs![ At::Href => self.link, At::Class => "bottomright"],
+                    "see more..."
+                ]
+            ]
         ]
     }
 }

@@ -72,3 +72,79 @@ div.content {
 		float: none;
 	}
 }
+
+article {
+	width: 90%;
+	border: 8px solid gray;
+	padding: 0px;
+	margin: 20px;
+}
+
+.clearfix::after {
+	content: "";
+	clear: both;
+	display: table;
+}
+
+/* .clearfix {
+	overflow: auto;
+} */
+
+.box1 {
+	float: left;
+	width: 66.66%; /* three boxes (use 25% for four, and 50% for two, etc) */
+}
+
+.box2 {
+	float: left;
+	width: 33.33%; /* three boxes (use 25% for four, and 50% for two, etc) */
+}
+
+/* article img { */
+	/* padding: 0px;
+	margin: 0px; */
+/* } */
+
+article div h1 {
+	border: 1px solid red;
+
+	padding: 10px;
+	margin: 0px;
+}
+
+article div p {
+	border: 1px solid blue;
+
+	padding: 5px;
+	margin: 0px;
+}
+
+.container {
+	position: relative;
+}
+
+/* TODO: this overlap with p */
+.bottomright {
+	position: absolute;
+	bottom: 0px;
+	right: 0px;
+}
+
+article div a {
+	float: right;
+	border: 1px solid green;
+
+	padding: 0px;
+	margin: 0px;
+}
+
+@media screen and (max-width: 700px) {
+	.box1 {
+		width: 100%;
+		height: auto;
+		position: relative;
+	}
+	.box2 {
+		width: 100%;
+	}
+}

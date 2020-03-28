@@ -30,7 +30,7 @@ impl Post {
     fn new() -> Self {
         Self {
             title: "Project title".into(),
-            image: "https://via.placeholder.com/1920x1080".into(),
+            image: "https://picsum.photos/800/450".into(),
             description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus eget blandit nisi. Nulla pretium feugiat lorem. Fusce enim nibh, auctor in diam quis, facilisis semper nibh. Pellentesque vestibulum turpis ut dui pretium, sit amet finibus mi placerat. Phasellus interdum pharetra ipsum, id euismod dui eleifend quis.".into(),
             link: "some link".into(),
         }

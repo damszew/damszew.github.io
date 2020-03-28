@@ -1,12 +1,21 @@
 /* The side navigation menu */
+body {
+	background-image: url(forest-with-sunlight-158251.jpg);
+	background-attachment: fixed;
+
+	color: white;
+}
+
 .sidebar {
 	margin: 0;
 	padding: 0;
-	width: 30%;
-	background-color: #f1f1f1;
+	width: 25%;
+	background-color: black;
 	position: fixed;
 	height: 100%;
 	overflow: auto;
+
+	opacity: 75%;
 
 	/* make elements center */
 	display: flex;
@@ -15,41 +24,41 @@
 
 }
 
-/* Sidebar links */
+div.sidebar {
+	top: 0px;
+	left: 0px;
+}
 
+/* Sidebar links */
 .sidebar a {
 	display: block;
-	color: black;
 	padding: 26px;
+	color: white;
 	text-decoration: none;
 
 	margin: auto;
 }
 
 /* Active/current link */
-
 .sidebar a.active {
-	background-color: #4CAF50;
+	background-color: gray;
 	color: white;
 }
 
 /* Links on mouse-over */
-
 .sidebar a:hover:not(.active) {
 	background-color: #555;
 	color: white;
 }
 
 /* Page content. The value of the margin-left property should match the value of the sidebar's width property */
-
 div.content {
-	margin-left: 30%;
+	margin-left: 25%; /* same as .sidebar width */
 	padding: 1px 16px;
 	height: 1000px;
 }
 
 /* On screens that are less than 700px wide, make the sidebar into a topbar */
-
 @media screen and (max-width: 700px) {
 	.sidebar {
 		width: 100%;
@@ -65,7 +74,6 @@ div.content {
 }
 
 /* On screens that are less than 400px, display the bar vertically, instead of horizontally */
-
 @media screen and (max-width: 400px) {
 	.sidebar a {
 		text-align: center;
@@ -75,9 +83,10 @@ div.content {
 
 article {
 	width: 90%;
-	border: 8px solid gray;
+	/* border: 8px solid gray; */
 	padding: 0px;
-	margin: 20px;
+	margin: 60px 20px 60px 20px;
+	background-color: black;
 }
 
 .clearfix::after {
@@ -85,10 +94,6 @@ article {
 	clear: both;
 	display: table;
 }
-
-/* .clearfix {
-	overflow: auto;
-} */
 
 .box1 {
 	float: left;
@@ -100,20 +105,15 @@ article {
 	width: 33.33%; /* three boxes (use 25% for four, and 50% for two, etc) */
 }
 
-/* article img { */
-	/* padding: 0px;
-	margin: 0px; */
-/* } */
-
 article div h1 {
-	border: 1px solid red;
+	/* border: 1px solid red; */
 
 	padding: 10px;
 	margin: 0px;
 }
 
 article div p {
-	border: 1px solid blue;
+	/* border: 1px solid blue; */
 
 	padding: 5px;
 	margin: 0px;
@@ -132,13 +132,14 @@ article div p {
 
 article div a {
 	float: right;
-	border: 1px solid green;
+	/* border: 2px solid white; */
 
+	color: white;
 	padding: 0px;
 	margin: 0px;
 }
 
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 1200px) {
 	.box1 {
 		width: 100%;
 		height: auto;

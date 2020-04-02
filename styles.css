@@ -102,11 +102,6 @@ article {
 	font-size: xxx-large;
 }
 
-.social_icons {
-	display: flex;
-	justify-content: center;
-}
-
 .about_me p {
 	margin: 30px;
 }
@@ -171,4 +166,24 @@ article div a {
 	.box2 {
 		width: 100%;
 	}
+}
+
+
+.social_icons {
+	display: flex;
+	justify-content: center;
+}
+
+/* Style all font awesome icons */
+.fab {
+	font-size: 30px;
+	width: 40px;
+	text-align: center;
+	text-decoration: none;
+	color: gray;
+  }
+
+/* Add a hover effect if you want */
+.fab:hover {
+	opacity: 0.7;
 }

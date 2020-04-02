@@ -83,11 +83,34 @@ div.content {
 
 article {
 	width: 90%;
-	/* border: 8px solid gray; */
 	padding: 0px;
 	margin: 60px 20px 60px 20px;
 	background-color: black;
 }
+
+.about_me {
+	width: 90%;
+	padding: 0px;
+	margin: 60px 20px 60px 20px;
+	background-color: black;
+}
+
+.about_me h1 {
+	display: flex;
+	justify-content: center;
+	margin: 30px auto 30px auto;
+	font-size: xxx-large;
+}
+
+.social_icons {
+	display: flex;
+	justify-content: center;
+}
+
+.about_me p {
+	margin: 30px;
+}
+
 
 .clearfix::after {
 	content: "";

@@ -100,34 +100,24 @@ body {
 	width: 33.33%;
 }
 
-article div h1 {
-	/* border: 1px solid red; */
+article div {
+	display: flex;
+	flex-direction: column;
+}
 
+article div h1 {
 	padding: 10px;
 	margin: 0px;
 }
 
 article div p {
-	/* border: 1px solid blue; */
-
+	flex-grow: 1;
 	padding: 5px;
 	margin: 0px;
 }
 
-.container {
-	position: relative;
-}
-
-/* TODO: this overlap with p */
-.bottomright {
-	position: absolute;
-	bottom: 0px;
-	right: 0px;
-}
-
 article div a {
-	float: right;
-	/* border: 2px solid white; */
+	align-self: flex-end;
 
 	color: white;
 	padding: 0px;
@@ -135,10 +125,12 @@ article div a {
 }
 
 @media screen and (max-width: 1200px) {
+	.content-box {
+		flex-direction: column;
+	}
 	.box1 {
 		width: 100%;
 		height: auto;
-		position: relative;
 	}
 	.box2 {
 		width: 100%;

@@ -1,8 +1,11 @@
 [package]
-name = "appname"
+name = "damszew_github_io"
 version = "0.1.0"
 authors = ["Damian Szewczyk <damian.szewczyk111@gmail.com>"]
 edition = "2018"
+description = "Personal web page for presenting pet projects"
+repository = "https://github.com/damszew/damszew.github.io"
+license = "MIT"
 
 [lib]
 crate-type = ["cdylib"]

@@ -47,7 +47,7 @@ struct Post<'a> {
 impl<'a> Post<'_> {
     fn to_html(&self) -> Node<Msg> {
         article![
-            attrs!(At::Class => "clearfix container"),
+            attrs!(At::Class => "content-box container"),
             img![attrs!(At::Src => self.image, At::Class => "box1")],
             div![
                 attrs!(At::Class => "box2"),

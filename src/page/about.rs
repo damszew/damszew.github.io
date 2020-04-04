@@ -3,7 +3,7 @@ use seed::{prelude::*, *};
 
 pub fn view() -> impl View<Msg> {
     div![
-        attrs!(At::Class => "about_me clearfix container"),
+        attrs!(At::Class => "content-box container"),
         img![attrs!(At::Src => "https://picsum.photos/450",  At::Class => "box2")],
         div![
             attrs!(At::Class => "box1"),

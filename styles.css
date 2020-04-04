@@ -72,23 +72,16 @@ body {
 	align-items: center;
 }
 
-
-article {
+.content-box {
 	width: 90%;
 	padding: 0px;
 	margin: 60px 20px 60px 20px;
 	background-color: black;
-}
 
-.about_me {
-	width: 90%;
-	padding: 0px;
-	margin: 60px 20px 60px 20px;
-	background-color: black;
+	display: flex;
 }
 
 .about_me h1 {
-	display: flex;
 	justify-content: center;
 	margin: 30px auto 30px auto;
 	font-size: xxx-large;
@@ -99,20 +92,12 @@ article {
 }
 
 
-.clearfix::after {
-	content: "";
-	clear: both;
-	display: table;
-}
-
 .box1 {
-	float: left;
-	width: 66.66%; /* three boxes (use 25% for four, and 50% for two, etc) */
+	width: 66.66%;
 }
 
 .box2 {
-	float: left;
-	width: 33.33%; /* three boxes (use 25% for four, and 50% for two, etc) */
+	width: 33.33%;
 }
 
 article div h1 {

@@ -8,12 +8,12 @@ pub fn view(model: &Model) -> impl View<Msg> {
         attrs![ At::Class => "sidebar" ],
         div![
             a![
-                attrs![ At::Href => Page::Projects.to_href(), At::Class => if let Page::Projects = current_page { "active" } else { "" } ],
+                attrs![ At::Class => if let Page::Projects = current_page { "active" } else { "" } ],
                 simple_ev(Ev::Click, Msg::ChangePage(Page::Projects)),
                 "My projects"
             ],
             a![
-                attrs![ At::Href => Page::AboutMe.to_href(), At::Class => if let Page::AboutMe = current_page { "active" } else { "" } ],
+                attrs![ At::Class => if let Page::AboutMe = current_page { "active" } else { "" } ],
                 simple_ev(Ev::Click, Msg::ChangePage(Page::AboutMe)),
                 "About Me"
             ],

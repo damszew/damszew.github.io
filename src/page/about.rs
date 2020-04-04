@@ -9,8 +9,8 @@ pub fn view() -> impl View<Msg> {
             h1!["Damian Szewczyk"],
             div![
                 attrs!(At::Class => "social_icons"),
-                a![attrs!(At::Href => "#", At::Class => "fab fa-linkedin")],
-                a![attrs!(At::Href => "#", At::Class => "fab fa-github")],
+                a![attrs!(At::Href => "https://www.linkedin.com/in/szewczyk-damian", At::Class => "fab fa-linkedin")],
+                a![attrs!(At::Href => "https://github.com/damszew", At::Class => "fab fa-github")],
             ],
             p!["Beginner Rustacean with passion of learning new technologies"],
         ],

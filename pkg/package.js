@@ -226,7 +226,7 @@ function _assertNum(n) {
 function __wbg_adapter_20(arg0, arg1, arg2) {
     _assertNum(arg0);
     _assertNum(arg1);
-    wasm._dyn_core__ops__function__FnMut__A____Output___R_as_wasm_bindgen__closure__WasmClosure___describe__invoke__hd1dd7aba6bbeffb4(arg0, arg1, addHeapObject(arg2));
+    wasm._dyn_core__ops__function__FnMut__A____Output___R_as_wasm_bindgen__closure__WasmClosure___describe__invoke__h20030fb47d2d90ea(arg0, arg1, arg2);
 }
 
 function __wbg_adapter_23(arg0, arg1, arg2) {
@@ -238,7 +238,7 @@ function __wbg_adapter_23(arg0, arg1, arg2) {
 function __wbg_adapter_26(arg0, arg1, arg2) {
     _assertNum(arg0);
     _assertNum(arg1);
-    wasm._dyn_core__ops__function__FnMut__A____Output___R_as_wasm_bindgen__closure__WasmClosure___describe__invoke__h20030fb47d2d90ea(arg0, arg1, arg2);
+    wasm._dyn_core__ops__function__FnMut__A____Output___R_as_wasm_bindgen__closure__WasmClosure___describe__invoke__hd1dd7aba6bbeffb4(arg0, arg1, addHeapObject(arg2));
 }
 
 /**
@@ -1289,9 +1289,17 @@ async function init(input) {
     imports.wbg.__wbindgen_throw = function(arg0, arg1) {
         throw new Error(getStringFromWasm0(arg0, arg1));
     };
+    imports.wbg.__wbindgen_closure_wrapper1158 = function(arg0, arg1, arg2) {
+        try {
+            var ret = makeMutClosure(arg0, arg1, 16, __wbg_adapter_26);
+            return addHeapObject(ret);
+        } catch (e) {
+            logError(e)
+        }
+    };
     imports.wbg.__wbindgen_closure_wrapper1160 = function(arg0, arg1, arg2) {
         try {
-            var ret = makeMutClosure(arg0, arg1, 18, __wbg_adapter_26);
+            var ret = makeMutClosure(arg0, arg1, 18, __wbg_adapter_20);
             return addHeapObject(ret);
         } catch (e) {
             logError(e)
@@ -1300,14 +1308,6 @@ async function init(input) {
     imports.wbg.__wbindgen_closure_wrapper6047 = function(arg0, arg1, arg2) {
         try {
             var ret = makeMutClosure(arg0, arg1, 127, __wbg_adapter_23);
-            return addHeapObject(ret);
-        } catch (e) {
-            logError(e)
-        }
-    };
-    imports.wbg.__wbindgen_closure_wrapper1158 = function(arg0, arg1, arg2) {
-        try {
-            var ret = makeMutClosure(arg0, arg1, 16, __wbg_adapter_20);
             return addHeapObject(ret);
         } catch (e) {
             logError(e)

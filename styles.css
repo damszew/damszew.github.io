@@ -3,6 +3,7 @@ body {
 	background-image: url(forest-with-sunlight-158251.jpg);
 	background-attachment: fixed;
 
+	margin: 0;
 	color: white;
 }
 
@@ -22,11 +23,6 @@ body {
 	justify-content: center;
 	align-items: center;
 
-}
-
-div.sidebar {
-	top: 0px;
-	left: 0px;
 }
 
 /* Sidebar links */

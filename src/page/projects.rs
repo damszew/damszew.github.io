@@ -3,27 +3,31 @@ use seed::{prelude::*, *};
 
 const POSTS: &[Post] = &[
     Post{
+        title: "Personal web page",
+        image: "https://picsum.photos/800/450",
+        description: "My first rust / web personal project.",
+        link_label: "Checkout at github",
+        link: "https://github.com/damszew/damszew.github.io",
+    },
+    Post{
         title: "Project title",
         image: "https://picsum.photos/800/450",
         description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus eget blandit nisi. Nulla pretium feugiat lorem. Fusce enim nibh, auctor in diam quis, facilisis semper nibh. Pellentesque vestibulum turpis ut dui pretium, sit amet finibus mi placerat. Phasellus interdum pharetra ipsum, id euismod dui eleifend quis.",
+        link_label: "See more...",
         link: "some link",
     },
     Post{
         title: "Project title",
         image: "https://picsum.photos/800/450",
         description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus eget blandit nisi. Nulla pretium feugiat lorem. Fusce enim nibh, auctor in diam quis, facilisis semper nibh. Pellentesque vestibulum turpis ut dui pretium, sit amet finibus mi placerat. Phasellus interdum pharetra ipsum, id euismod dui eleifend quis.",
+        link_label: "See more...",
         link: "some link",
     },
     Post{
         title: "Project title",
         image: "https://picsum.photos/800/450",
         description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus eget blandit nisi. Nulla pretium feugiat lorem. Fusce enim nibh, auctor in diam quis, facilisis semper nibh. Pellentesque vestibulum turpis ut dui pretium, sit amet finibus mi placerat. Phasellus interdum pharetra ipsum, id euismod dui eleifend quis.",
-        link: "some link",
-    },
-    Post{
-        title: "Project title",
-        image: "https://picsum.photos/800/450",
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus eget blandit nisi. Nulla pretium feugiat lorem. Fusce enim nibh, auctor in diam quis, facilisis semper nibh. Pellentesque vestibulum turpis ut dui pretium, sit amet finibus mi placerat. Phasellus interdum pharetra ipsum, id euismod dui eleifend quis.",
+        link_label: "See more...",
         link: "some link",
     },
 ];
@@ -36,6 +40,7 @@ struct Post<'a> {
     title: &'a str,
     image: &'a Href,
     description: &'a str,
+    link_label: &'a str,
     link: &'a Href,
 }
 
@@ -50,8 +55,8 @@ impl<'a> Post<'_> {
                 p![self.description],
                 a![
                     attrs![ At::Href => self.link, At::Class => "bottomright"],
-                    "see more..."
-                ]
+                    self.link_label,
+                ],
             ]
         ]
     }
@@ -60,6 +65,7 @@ impl<'a> Post<'_> {
 pub struct Model {
     posts: &'static [Post<'static>],
 }
+
 
 impl Default for Model {
     fn default() -> Self {

@@ -81,26 +81,12 @@ body {
 	display: flex;
 }
 
-.about_me h1 {
-	justify-content: center;
-	margin: 30px auto 30px auto;
-	font-size: xxx-large;
-}
-
-.about_me p {
-	margin: 30px;
-}
-
-
-.box1 {
+article img {
 	width: 66.66%;
 }
 
-.box2 {
-	width: 33.33%;
-}
-
 article div {
+	width: 33.33%;
 	display: flex;
 	flex-direction: column;
 }
@@ -128,15 +114,24 @@ article div a {
 	.content-box {
 		flex-direction: column;
 	}
-	.box1 {
+	article img {
 		width: 100%;
 		height: auto;
 	}
-	.box2 {
+	article div {
 		width: 100%;
 	}
 }
 
+.about_me h1 {
+	justify-content: center;
+	margin: 30px auto 30px auto;
+	font-size: xxx-large;
+}
+
+.about_me p {
+	margin: 30px;
+}
 
 .social_icons {
 	display: flex;

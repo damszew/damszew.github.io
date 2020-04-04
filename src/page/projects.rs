@@ -47,14 +47,14 @@ struct Post<'a> {
 impl<'a> Post<'_> {
     fn to_html(&self) -> Node<Msg> {
         article![
-            attrs!(At::Class => "content-box container"),
-            img![attrs!(At::Src => self.image, At::Class => "box1")],
+            attrs!(At::Class => "content-box"),
+            img![attrs!(At::Src => self.image, At::Class => "")],
             div![
-                attrs!(At::Class => "box2"),
+                attrs!(At::Class => ""),
                 h1![self.title],
                 p![self.description],
                 a![
-                    attrs![ At::Href => self.link, At::Class => "bottomright"],
+                    attrs![ At::Href => self.link],
                     self.link_label,
                 ],
             ]

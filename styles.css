@@ -7,75 +7,71 @@ body {
 	color: white;
 }
 
-.sidebar {
+#sidebar {
+	width: 25%;
+	height: 100%;
 	margin: 0;
 	padding: 0;
-	width: 25%;
 	background-color: black;
 	position: fixed;
-	height: 100%;
 	overflow: auto;
-
 	opacity: 75%;
 
-	/* make elements center */
 	display: flex;
-	justify-content: center;
-	align-items: center;
-
+	flex-direction: column;
 }
 
 /* Sidebar links */
-.sidebar a {
-	display: block;
-	padding: 26px;
-	color: white;
-	text-decoration: none;
+#sidebar a {
+	text-align: center;
+	width: 80%;
+	padding: 26px 0px;
 
-	margin: auto;
 }
 
 /* Active/current link */
-.sidebar a.active {
+#sidebar a.active {
 	background-color: gray;
-	color: white;
 }
 
 /* Links on mouse-over */
-.sidebar a:hover:not(.active) {
+#sidebar a:hover:not(.active) {
 	background-color: #555;
-	color: white;
 }
 
-/* Page content. The value of the margin-left property should match the value of the sidebar's width property */
-div.content {
-	margin-left: 25%; /* same as .sidebar width */
-	padding: 1px 16px;
-	height: 1000px;
+#content {
+	margin-left: 25%; /* same as #sidebar width */
+	padding: 1px;
 }
 
 /* On screens that are less than 700px wide, make the sidebar into a topbar */
 @media screen and (max-width: 700px) {
-	.sidebar {
+	#sidebar {
 		width: 100%;
 		height: auto;
 		position: relative;
+		flex-direction: row;
 	}
-	.sidebar a {
-		float: left;
-	}
-	div.content {
+	#content {
 		margin-left: 0;
 	}
 }
 
 /* On screens that are less than 400px, display the bar vertically, instead of horizontally */
 @media screen and (max-width: 400px) {
-	.sidebar a {
-		text-align: center;
-		float: none;
+	#sidebar {
+		flex-direction: column;
+	}
+	#sidebar a {
+		width: 100%;
 	}
 }
+
+.center-items {
+	justify-content: center;
+	align-items: center;
+}
+
 
 article {
 	width: 90%;

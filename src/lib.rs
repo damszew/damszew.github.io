@@ -35,10 +35,13 @@ fn update(msg: Msg, model: &mut Model, _: &mut impl Orders<Msg>) {
 
 fn view(model: &Model) -> impl View<Msg> {
     div![
-        page::partial::sidebar::view(model).els(),
+        div![
+            attrs![ At::Id => "sidebar", At::Class => "center-items" ],
+            page::partial::sidebar::view(model).els(),
+        ],
         // Pages
         div![
-            attrs![ At::Class => "content" ],
+            attrs![ At::Id => "content" ],
             match model.page {
                 Page::Projects => page::projects::view(&model.posts).els(),
                 Page::AboutMe => page::about::view().els(),

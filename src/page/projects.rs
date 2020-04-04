@@ -28,21 +28,15 @@ const POSTS: &[Post] = &[
     },
 ];
 
-pub struct Model {
-    posts: &'static [Post<'static>],
-}
 
-impl Default for Model {
-    fn default() -> Self {
-        Self { posts: &POSTS }
-    }
-}
+
+type Href = str;
 
 struct Post<'a> {
     title: &'a str,
-    image: &'a str, // will be a path
+    image: &'a Href,
     description: &'a str,
-    link: &'a str, // maybe Url?
+    link: &'a Href,
 }
 
 impl<'a> Post<'_> {
@@ -60,6 +54,16 @@ impl<'a> Post<'_> {
                 ]
             ]
         ]
+    }
+}
+
+pub struct Model {
+    posts: &'static [Post<'static>],
+}
+
+impl Default for Model {
+    fn default() -> Self {
+        Self { posts: &POSTS }
     }
 }
 

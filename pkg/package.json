@@ -1,9 +1,15 @@
 {
-  "name": "appname",
+  "name": "damszew_github_io",
   "collaborators": [
     "Damian Szewczyk <damian.szewczyk111@gmail.com>"
   ],
+  "description": "Personal web page for presenting pet projects",
   "version": "0.1.0",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/damszew/damszew.github.io"
+  },
   "files": [
     "package_bg.wasm",
     "package.js",

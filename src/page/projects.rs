@@ -4,31 +4,14 @@ use seed::{prelude::*, *};
 const POSTS: &[Post] = &[
     Post{
         title: "Personal web page",
-        image: "https://picsum.photos/800/450",
-        description: "My first rust / web personal project.",
-        link_label: "Checkout at github",
+        image: "/static/personal_page_screenshot.png",
+        description: "My very first pet project that I want to show to the world.
+            Being more of a system level dev, I have always wanted to create something more visual.
+            Tackling unknown domain with newly learned language was quite a challange.
+            But thanks to [rust lang](https://www.rust-lang.org/) community, beginner friendly examples provided by [seed-rs](https://seed-rs.org/)
+            and incomparably good explanation of fundamentals from [w3schools](https://www.w3schools.com/), it was nothing less than a pleasant challenge.",
+        link_label: "Check it out at github",
         link: "https://github.com/damszew/damszew.github.io",
-    },
-    Post{
-        title: "Project title",
-        image: "https://picsum.photos/801/450",
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus eget blandit nisi. Nulla pretium feugiat lorem. Fusce enim nibh, auctor in diam quis, facilisis semper nibh. Pellentesque vestibulum turpis ut dui pretium, sit amet finibus mi placerat. Phasellus interdum pharetra ipsum, id euismod dui eleifend quis.",
-        link_label: "See more...",
-        link: "some link",
-    },
-    Post{
-        title: "Project title",
-        image: "https://picsum.photos/802/450",
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus eget blandit nisi. Nulla pretium feugiat lorem. Fusce enim nibh, auctor in diam quis, facilisis semper nibh. Pellentesque vestibulum turpis ut dui pretium, sit amet finibus mi placerat. Phasellus interdum pharetra ipsum, id euismod dui eleifend quis.",
-        link_label: "See more...",
-        link: "some link",
-    },
-    Post{
-        title: "Project title",
-        image: "https://picsum.photos/803/450",
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus eget blandit nisi. Nulla pretium feugiat lorem. Fusce enim nibh, auctor in diam quis, facilisis semper nibh. Pellentesque vestibulum turpis ut dui pretium, sit amet finibus mi placerat. Phasellus interdum pharetra ipsum, id euismod dui eleifend quis.",
-        link_label: "See more...",
-        link: "some link",
     },
 ];
 
@@ -52,7 +35,7 @@ impl<'a> Post<'_> {
             div![
                 attrs!(At::Class => ""),
                 h1![self.title],
-                p![self.description],
+                Node::from_markdown(self.description),
                 a![
                     attrs![ At::Href => self.link],
                     self.link_label,

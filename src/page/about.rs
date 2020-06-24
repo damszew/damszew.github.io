@@ -11,6 +11,7 @@ pub fn view() -> impl View<Msg> {
                 attrs!(At::Href => "https://www.linkedin.com/in/szewczyk-damian", At::Class => "fab fa-linkedin")
             ],
             a![attrs!(At::Href => "https://github.com/damszew", At::Class => "fab fa-github")],
+            a![attrs!(At::Href => "https://gitlab.com/damszew", At::Class => "fab fa-gitlab")],
         ],
         p![
             "I'm professional C++ software developer also working with Yocto and CMake.",

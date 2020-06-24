@@ -8,9 +8,9 @@ cache:
   paths:
   - cargo/
   - target/
-  - rustup/
 
 before_script:
+  - export CARGO_HOME="$CI_PROJECT_DIR/cargo"
   - rustup --version
   - rustc --version
   - cargo --version

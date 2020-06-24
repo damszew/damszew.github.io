@@ -1,11 +1,35 @@
 image: "rust:latest"
 
+workflow:
+  rules:
+    - if: '$CI_COMMIT_BRANCH'
+
+cache:
+  paths:
+  - cargo/
+  - target/
+  - rustup/
+
+before_script:
+  - rustup --version
+  - rustc --version
+  - cargo --version
+  - cargo install cargo-make
+
 pages:
-        script:
-        - cargo install cargo-make
-        - cargo make build_release
-        - cp -r index.html static/ public/
-        - mv pkg/ public/
-        artifacts:
-                paths:
-                - public
+  stage: deploy
+  script:
+  - cargo make build_release
+  - mkdir public/
+  - cp -r index.html static/ public/
+  - mv pkg/ public/
+  artifacts:
+    paths:
+    - public
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "master"'
+
+test:
+  stage: test
+  script:
+  - cargo make check

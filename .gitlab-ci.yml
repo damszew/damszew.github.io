@@ -1,0 +1,11 @@
+image: "rust:latest"
+
+pages:
+        script:
+        - cargo install cargo-make
+        - cargo make build_release
+        - cp -r index.html static/ public/
+        - mv pkg/ public/
+        artifacts:
+                paths:
+                - public

@@ -15,8 +15,6 @@ const POSTS: &[Post] = &[
     },
 ];
 
-
-
 type Href = str;
 
 struct Post<'a> {
@@ -36,10 +34,7 @@ impl<'a> Post<'_> {
                 attrs!(At::Class => ""),
                 h1![self.title],
                 Node::from_markdown(self.description),
-                a![
-                    attrs![ At::Href => self.link],
-                    self.link_label,
-                ],
+                a![attrs![ At::Href => self.link], self.link_label,],
             ]
         ]
     }
@@ -48,7 +43,6 @@ impl<'a> Post<'_> {
 pub struct Model {
     posts: &'static [Post<'static>],
 }
-
 
 impl Default for Model {
     fn default() -> Self {

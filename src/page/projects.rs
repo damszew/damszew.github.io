@@ -10,8 +10,8 @@ const POSTS: &[Post] = &[
             Tackling unknown domain with newly learned language was quite a challange.
             But thanks to [rust lang](https://www.rust-lang.org/) community, beginner friendly examples provided by [seed-rs](https://seed-rs.org/)
             and incomparably good explanation of fundamentals from [w3schools](https://www.w3schools.com/), it was nothing less than a pleasant challenge.",
-        link_label: "Check it out at github",
-        link: "https://github.com/damszew/damszew.github.io",
+        link_label: "Check it out at gitlab",
+        link: "https://gitlab.com/damszew/damszew.gitlab.io",
     },
 ];
 

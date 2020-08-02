@@ -1,7 +1,7 @@
 use crate::Msg;
 use seed::{prelude::*, *};
 
-pub fn view() -> impl View<Msg> {
+pub fn view() -> impl IntoNodes<Msg> {
     div![
         attrs!(At::Class => "content-box about_me"),
         h1!["Damian Szewczyk"],

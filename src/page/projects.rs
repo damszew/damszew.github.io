@@ -50,7 +50,7 @@ impl Default for Model {
     }
 }
 
-pub fn view(model: &Model) -> impl View<Msg> {
+pub fn view(model: &Model) -> impl IntoNodes<Msg> {
     model
         .posts
         .iter()

@@ -33,18 +33,18 @@ fn update(msg: Msg, model: &mut Model, _: &mut impl Orders<Msg>) {
     }
 }
 
-fn view(model: &Model) -> impl View<Msg> {
+fn view(model: &Model) -> impl IntoNodes<Msg> {
     div![
         div![
             attrs![ At::Id => "sidebar", At::Class => "center-items" ],
-            page::partial::sidebar::view(model).els(),
+            page::partial::sidebar::view(model).into_nodes(),
         ],
         // Pages
         div![
             attrs![ At::Id => "content" ],
             match model.page {
-                Page::Projects => page::projects::view(&model.posts).els(),
-                Page::AboutMe => page::about::view().els(),
+                Page::Projects => page::projects::view(&model.posts).into_nodes(),
+                Page::AboutMe => page::about::view().into_nodes(),
             }
         ],
     ]

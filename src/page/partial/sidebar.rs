@@ -1,7 +1,7 @@
 use crate::{Model, Msg, Page};
 use seed::{prelude::*, *};
 
-pub fn view(model: &Model) -> impl View<Msg> {
+pub fn view(model: &Model) -> impl IntoNodes<Msg> {
     let current_page = &model.page;
 
     vec![

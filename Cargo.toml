@@ -1,10 +1,10 @@
 [package]
-name = "damszew_github_io"
+name = "damszew_gitlab_io"
 version = "0.1.0"
 authors = ["Damian Szewczyk <damian.szewczyk111@gmail.com>"]
 edition = "2018"
 description = "Personal web page for presenting pet projects"
-repository = "https://github.com/damszew/damszew.github.io"
+repository = "https://gitlab.com/damszew/damszew.gitlab.io"
 license = "MIT"
 
 [lib]

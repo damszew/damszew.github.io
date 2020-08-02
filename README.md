@@ -1,6 +1,6 @@
-# damszew.github.io
+# damszew.gitlab.io
 
-damszew.github.io is a personal web page used to share pet projects.
+damszew.gitlab.io is a personal web page used to share pet projects.
 
 
 ## License

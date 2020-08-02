@@ -9,12 +9,35 @@ cache:
   - cargo/
   - target/
 
+stages:
+  - check
+  - deploy
+
 before_script:
   - export CARGO_HOME="$CI_PROJECT_DIR/cargo"
   - rustup --version
   - rustc --version
   - cargo --version
   - cargo install cargo-make
+
+
+
+check:
+  stage: check
+  script:
+  - cargo make check
+
+fmt:
+  stage: check
+  script:
+  - rustup component add rustfmt
+  - cargo fmt --all -- --check
+
+clippy:
+  stage: check
+  script:
+  - rustup component add clippy
+  - cargo clippy -- -D warnings
 
 pages:
   stage: deploy
@@ -28,8 +51,3 @@ pages:
     - public
   rules:
     - if: '$CI_COMMIT_BRANCH == "master"'
-
-test:
-  stage: test
-  script:
-  - cargo make check

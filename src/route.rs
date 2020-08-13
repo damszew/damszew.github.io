@@ -4,4 +4,6 @@ use yew_router::prelude::*;
 pub enum Route {
     #[to = "/"]
     ProjectsPage,
+    #[to = "/aboutme"]
+    AboutMePage,
 }

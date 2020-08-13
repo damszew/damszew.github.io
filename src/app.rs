@@ -2,6 +2,7 @@ use yew::prelude::*;
 use yew_router::prelude::*;
 
 use crate::pages::Projects;
+use crate::pages::About;
 use crate::route::Route;
 
 pub struct App {}
@@ -25,6 +26,7 @@ impl Component for App {
     fn view(&self) -> Html {
         let render = Router::render(|switch: Route| match switch {
             Route::ProjectsPage => html! {<Projects/>},
+            Route::AboutMePage => html! {<About/>}
         });
 
         html! {

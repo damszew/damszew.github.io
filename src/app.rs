@@ -32,7 +32,7 @@ impl Component for App {
 
         html! {
             <div>
-                <Navbar />
+                <Navbar active_page={Route::ProjectsPage} />
                 <div id="content">
                     <Router<Route, ()> render=render/>
                 </div>

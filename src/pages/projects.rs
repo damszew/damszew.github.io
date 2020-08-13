@@ -82,10 +82,10 @@ impl Component for Projects {
                             <a href={post.link}>{&post.link_label}</a>
                         </div>
                     </article>
-                    }
+                }
             })
             .collect();
 
-        html! { <span>{posts}</span> }
+        html! { <>{posts}</> }
     }
 }

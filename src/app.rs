@@ -3,6 +3,7 @@ use yew_router::prelude::*;
 
 use crate::pages::Projects;
 use crate::pages::About;
+use crate::components::Navbar;
 use crate::route::Route;
 
 pub struct App {}
@@ -30,7 +31,12 @@ impl Component for App {
         });
 
         html! {
-            <Router<Route, ()> render=render/>
+            <div>
+                <Navbar />
+                <div id="content">
+                    <Router<Route, ()> render=render/>
+                </div>
+            </div>
         }
     }
 }

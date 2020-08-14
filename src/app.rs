@@ -30,11 +30,11 @@ impl Component for App {
             Route::AboutMePage => html! {<About/>}
         });
 
-        html! {
+       html! {
             <div>
                 <Navbar active_page={Route::ProjectsPage} />
                 <div id="content">
-                    <Router<Route, ()> render=render/>
+                    <Router<Route> render=render/>
                 </div>
             </div>
         }

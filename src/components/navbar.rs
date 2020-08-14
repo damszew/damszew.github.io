@@ -4,7 +4,6 @@ use yew::prelude::*;
 
 pub struct Navbar {
     props: Props,
-    link: ComponentLink<Self>,
 }
 
 #[derive(Properties, Clone)]
@@ -12,23 +11,15 @@ pub struct Props {
     pub active_page: Route,
 }
 
-pub enum Msg {
-    ChangePage(Route),
-}
-
 impl Component for Navbar {
-    type Message = Msg;
+    type Message = ();
     type Properties = Props;
 
-    fn create(props: Self::Properties, link: ComponentLink<Self>) -> Self {
-        Self { props, link }
+    fn create(props: Self::Properties, _: ComponentLink<Self>) -> Self {
+        Self { props }
     }
 
-    fn update(&mut self, message: Self::Message) -> ShouldRender {
-        match message {
-            Msg::ChangePage(page) => self.props.active_page = page,
-        }
-
+    fn update(&mut self, _: Self::Message) -> ShouldRender {
         true
     }
 
@@ -37,12 +28,11 @@ impl Component for Navbar {
     }
 
     fn view(&self) -> Html {
-        let callback = self.link.callback(|route: Route| Msg::ChangePage(route));
-
+        // TODO: Fix highlighting on currently active page
         html! {
             <div id="sidebar" class="center-items">
-                <ActButton label={"My projects"}, page={Route::ProjectsPage} is_active={if let Route::ProjectsPage = self.props.active_page {true} else {false} } on_page_change=callback.clone() />
-                <ActButton label={"About Me"}, page={Route::AboutMePage} is_active={if let Route::AboutMePage = self.props.active_page {true} else {false} } on_page_change=callback />
+                <ActButton label={"My projects"}, page={Route::ProjectsPage} is_active={if let Route::ProjectsPage = self.props.active_page {true} else {false} } />
+                <ActButton label={"About Me"}, page={Route::AboutMePage} is_active={if let Route::AboutMePage = self.props.active_page {true} else {false} } />
             </div>
         }
     }

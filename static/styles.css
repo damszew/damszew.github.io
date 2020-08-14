@@ -25,7 +25,8 @@ body {
 	text-align: center;
 	width: 80%;
 	padding: 26px 0px;
-
+	color: white;
+	text-decoration: none;
 }
 
 /* Active/current link */

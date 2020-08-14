@@ -1,5 +1,6 @@
 use crate::route::Route;
 use yew::prelude::*;
+use yew_router::components::RouterAnchor;
 
 pub struct ActButton {
     props: Props,
@@ -42,9 +43,11 @@ impl Component for ActButton {
         let onclick = self.link.callback(|_| Msg::ChangePage);
         let active_class = if self.props.is_active { "active" } else { "" };
 
+        type Anchor = RouterAnchor<Route>;
         html! {
-            // <button class="product_atc_button" onclick=onclick>{"Add To Cart"}</button>
-            <a class=active_class onclick=onclick>{&self.props.label}</a>
+            <Anchor route={&self.props.page}>
+                <a class=active_class onclick=onclick>{&self.props.label}</a>
+            </Anchor>
         }
     }
 }

@@ -10,7 +10,6 @@ pub struct ActButton {
 pub struct Props {
     pub label: String,
     pub page: Route,
-    pub is_active: bool,
 }
 
 impl Component for ActButton {

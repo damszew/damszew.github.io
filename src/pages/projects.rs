@@ -1,6 +1,7 @@
 use yew::prelude::*;
 
 mod post {
+    use yew::{html, Html};
 
     pub const POSTS: &[Post] = &[
         Post{
@@ -42,6 +43,21 @@ mod post {
         pub link_label: &'a str,
         pub link: &'a Href,
     }
+
+    impl<'a> Post<'_> {
+        pub fn to_html(&self) -> Html {
+            html! {
+                <article class="content-box">
+                    <img class="" src={&self.image}/>
+                    <div class="">
+                        <h1>{&self.title}</h1>
+                        <p>{&self.description}</p> // TODO: this parse markdown to html
+                        <a href={self.link}>{&self.link_label}</a>
+                    </div>
+                </article>
+            }
+        }
+    }
 }
 
 use post::Post;
@@ -69,22 +85,11 @@ impl Component for Projects {
     }
 
     fn view(&self) -> Html {
-        let posts: Vec<Html> = self
+        let posts = self
             .posts
             .iter()
-            .map(|post: &post::Post| {
-                html! {
-                    <article class="content-box">
-                        <img class="" src={&post.image}/>
-                        <div class="">
-                            <h1>{&post.title}</h1>
-                            <p>{&post.description}</p> // TODO: this parse markdown to html
-                            <a href={post.link}>{&post.link_label}</a>
-                        </div>
-                    </article>
-                }
-            })
-            .collect();
+            .map(|post| post.to_html())
+            .collect::<Vec<_>>();
 
         html! { <>{posts}</> }
     }

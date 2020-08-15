@@ -10,6 +10,8 @@ pub struct Navlink {
 pub struct Props {
     pub label: String,
     pub page: Route,
+    pub active: bool,
+    pub active_class: String,
 }
 
 impl Component for Navlink {
@@ -31,8 +33,15 @@ impl Component for Navlink {
 
     fn view(&self) -> Html {
         type Anchor = RouterAnchor<Route>;
+
+        let classes = if self.props.active {
+            &self.props.active_class
+        } else {
+            ""
+        };
+
         html! {
-            <Anchor route={&self.props.page} >
+            <Anchor route={&self.props.page} classes={classes}>
                 {&self.props.label}
             </Anchor>
         }

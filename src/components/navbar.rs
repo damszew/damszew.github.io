@@ -24,8 +24,8 @@ impl Component for Navbar {
         // TODO: Fix highlighting on currently active page
         html! {
             <div id="sidebar" class="center-items">
-                <Navlink label={"My projects"}, page={Route::ProjectsPage} />
-                <Navlink label={"About Me"}, page={Route::AboutMePage} />
+                <Navlink label={"My projects"}, page={Route::ProjectsPage}, active={true}, active_class={"active"} />
+                <Navlink label={"About Me"}, page={Route::AboutMePage}, active={false}, active_class={"active"} />
             </div>
         }
     }

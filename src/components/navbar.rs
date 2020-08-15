@@ -1,32 +1,44 @@
 use crate::components::navlink::Navlink;
 use crate::route::Route;
 use yew::prelude::*;
+use yew_router::prelude::RouteService;
 
 pub struct Navbar {
-    props: Props,
     link: ComponentLink<Self>,
+    current_page: yew_router::route::Route<()>,
+    _route_service: RouteService,
 }
 
 #[derive(Properties, Clone)]
-pub struct Props {
-    pub active_page: u32,
-}
+pub struct Props {}
 
 pub enum Msg {
-    ChangeItem(u32),
+    RouteChanged(yew_router::route::Route<()>),
+    Change(Route),
 }
 
 impl Component for Navbar {
     type Message = Msg;
     type Properties = Props;
 
-    fn create(props: Self::Properties, link: ComponentLink<Self>) -> Self {
-        Self { props, link }
+    fn create(_: Self::Properties, link: ComponentLink<Self>) -> Self {
+        let mut route_service = RouteService::new();
+        let current_page = route_service.get_route();
+
+        let callback = link.callback(Msg::RouteChanged);
+        route_service.register_callback(callback);
+
+        Self {
+            link,
+            current_page,
+            _route_service: route_service,
+        }
     }
 
     fn update(&mut self, msg: Self::Message) -> ShouldRender {
         match msg {
-            Msg::ChangeItem(id) => self.props.active_page = id,
+            Msg::RouteChanged(route) => self.current_page = route,
+            Msg::Change(page) => self.current_page = page.into(),
         }
 
         true
@@ -42,16 +54,16 @@ impl Component for Navbar {
                 <Navlink
                     label={"My projects"},
                     page={Route::ProjectsPage},
-                    active={&self.props.active_page == &0},
+                    active={self.current_page == Route::ProjectsPage.into()},
                     active_class={"active"},
-                    on_clicked={self.link.callback(|_|{ Msg::ChangeItem(0) })}
+                    on_clicked={self.link.callback(|_| Msg::Change(Route::ProjectsPage))}
                 />
                 <Navlink
                     label={"About Me"},
                     page={Route::AboutMePage},
-                    active={&self.props.active_page == &1},
+                    active={self.current_page == Route::AboutMePage.into()},
                     active_class={"active"},
-                    on_clicked={self.link.callback(|_|{ Msg::ChangeItem(1) })}
+                    on_clicked={self.link.callback(|_| Msg::Change(Route::AboutMePage))}
                 />
             </div>
         }

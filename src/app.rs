@@ -1,9 +1,9 @@
 use yew::prelude::*;
 use yew_router::prelude::*;
 
-use crate::pages::Projects;
-use crate::pages::About;
 use crate::components::Navbar;
+use crate::pages::About;
+use crate::pages::Projects;
 use crate::route::Route;
 
 pub struct App {}
@@ -27,10 +27,10 @@ impl Component for App {
     fn view(&self) -> Html {
         let render = Router::render(|switch: Route| match switch {
             Route::ProjectsPage => html! {<Projects/>},
-            Route::AboutMePage => html! {<About/>}
+            Route::AboutMePage => html! {<About/>},
         });
 
-       html! {
+        html! {
             <div>
                 // TODO: Fix Navlink highlight when starting from different route
                 <Navbar active_page={0} />

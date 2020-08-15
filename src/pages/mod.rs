@@ -1,5 +1,5 @@
-mod projects;
 mod about;
+mod projects;
 
-pub use projects::Projects;
 pub use about::About;
+pub use projects::Projects;

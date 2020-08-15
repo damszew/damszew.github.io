@@ -2,17 +2,33 @@ use crate::components::navlink::Navlink;
 use crate::route::Route;
 use yew::prelude::*;
 
-pub struct Navbar {}
+pub struct Navbar {
+    props: Props,
+    link: ComponentLink<Self>,
+}
+
+#[derive(Properties, Clone)]
+pub struct Props {
+    pub active_page: u32,
+}
+
+pub enum Msg {
+    ChangeItem(u32),
+}
 
 impl Component for Navbar {
-    type Message = ();
-    type Properties = ();
+    type Message = Msg;
+    type Properties = Props;
 
-    fn create(_: Self::Properties, _: ComponentLink<Self>) -> Self {
-        Self {}
+    fn create(props: Self::Properties, link: ComponentLink<Self>) -> Self {
+        Self { props, link }
     }
 
-    fn update(&mut self, _: Self::Message) -> ShouldRender {
+    fn update(&mut self, msg: Self::Message) -> ShouldRender {
+        match msg {
+            Msg::ChangeItem(id) => self.props.active_page = id,
+        }
+
         true
     }
 
@@ -21,11 +37,22 @@ impl Component for Navbar {
     }
 
     fn view(&self) -> Html {
-        // TODO: Fix highlighting on currently active page
         html! {
             <div id="sidebar" class="center-items">
-                <Navlink label={"My projects"}, page={Route::ProjectsPage}, active={true}, active_class={"active"} />
-                <Navlink label={"About Me"}, page={Route::AboutMePage}, active={false}, active_class={"active"} />
+                <Navlink
+                    label={"My projects"},
+                    page={Route::ProjectsPage},
+                    active={&self.props.active_page == &0},
+                    active_class={"active"},
+                    on_clicked={self.link.callback(|_|{ Msg::ChangeItem(0) })}
+                />
+                <Navlink
+                    label={"About Me"},
+                    page={Route::AboutMePage},
+                    active={&self.props.active_page == &1},
+                    active_class={"active"},
+                    on_clicked={self.link.callback(|_|{ Msg::ChangeItem(1) })}
+                />
             </div>
         }
     }

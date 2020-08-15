@@ -32,7 +32,8 @@ impl Component for App {
 
        html! {
             <div>
-                <Navbar/>
+                // TODO: Fix Navlink highlight when starting from different route
+                <Navbar active_page={0} />
                 <div id="content">
                     <Router<Route> render=render/>
                 </div>

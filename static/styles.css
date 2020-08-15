@@ -24,9 +24,12 @@ body {
 #sidebar a {
 	text-align: center;
 	width: 80%;
-	padding: 26px 0px;
 	color: white;
 	text-decoration: none;
+}
+
+#sidebar a div {
+	padding: 26px 0px;
 }
 
 /* Active/current link */

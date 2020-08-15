@@ -2,7 +2,7 @@ use crate::route::Route;
 use yew::prelude::*;
 use yew_router::components::RouterAnchor;
 
-pub struct ActButton {
+pub struct Navlink {
     props: Props,
 }
 
@@ -12,7 +12,7 @@ pub struct Props {
     pub page: Route,
 }
 
-impl Component for ActButton {
+impl Component for Navlink {
     type Message = ();
     type Properties = Props;
 

@@ -1,4 +1,4 @@
-use crate::components::act_button::ActButton;
+use crate::components::navlink::Navlink;
 use crate::route::Route;
 use yew::prelude::*;
 
@@ -24,8 +24,8 @@ impl Component for Navbar {
         // TODO: Fix highlighting on currently active page
         html! {
             <div id="sidebar" class="center-items">
-                <ActButton label={"My projects"}, page={Route::ProjectsPage} />
-                <ActButton label={"About Me"}, page={Route::AboutMePage} />
+                <Navlink label={"My projects"}, page={Route::ProjectsPage} />
+                <Navlink label={"About Me"}, page={Route::AboutMePage} />
             </div>
         }
     }

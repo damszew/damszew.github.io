@@ -1,5 +1,5 @@
 mod navbar;
-mod act_button;
+mod navlink;
 
 pub use navbar::Navbar;
-pub use act_button::ActButton;
+pub use navlink::Navlink;

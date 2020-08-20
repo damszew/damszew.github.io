@@ -18,13 +18,13 @@ before_script:
   - rustup --version
   - rustc --version
   - cargo --version
-  - cargo install cargo-make
 
 
 
 check:
   stage: check
   script:
+  - cargo install cargo-make
   - cargo make check
 
 fmt:
@@ -42,6 +42,7 @@ clippy:
 pages:
   stage: deploy
   script:
+  - cargo install cargo-make
   - cargo make build_release
   - mkdir public/
   - cp -r index.html static/ public/

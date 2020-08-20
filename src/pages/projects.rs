@@ -1,6 +1,8 @@
 use yew::prelude::*;
 
 mod post {
+    use crate::components::RawHTML;
+    use comrak::{markdown_to_html, ComrakOptions};
     use yew::{html, Html};
 
     pub const POSTS: &[Post] = &[
@@ -14,7 +16,7 @@ mod post {
                 but for now, the simple example which I have prepared seems to be \"good enough\" solution to show others the basics of this library.
 
 
-    It was my first ever open source contribution. This is just a small example
+It was my first ever open source contribution. This is just a small example
                 but first **merge** to open source project feels amazing.
                 I can't wait to contribute to OSS again 🔥.
                 ",
@@ -49,9 +51,9 @@ mod post {
             html! {
                 <article class="content-box">
                     <img class="" src={&self.image}/>
-                    <div class="">
+                    <div class="post">
                         <h1>{&self.title}</h1>
-                        <p>{&self.description}</p> // TODO: this parse markdown to html
+                        <RawHTML inner_html={markdown_to_html(&self.description, &ComrakOptions::default())}/>
                         <a href={self.link}>{&self.link_label}</a>
                     </div>
                 </article>

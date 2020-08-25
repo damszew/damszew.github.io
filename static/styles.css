@@ -24,8 +24,12 @@ body {
 #sidebar a {
 	text-align: center;
 	width: 80%;
-	padding: 26px 0px;
+	color: white;
+	text-decoration: none;
+}
 
+#sidebar a div {
+	padding: 26px 0px;
 }
 
 /* Active/current link */
@@ -88,18 +92,18 @@ article img {
 	margin: auto;
 }
 
-article div {
+.post {
 	width: 33.33%;
 	display: flex;
 	flex-direction: column;
 }
 
-article div h1 {
+.post h1 {
 	padding: 10px;
 	margin: 0px;
 }
 
-article div p {
+.post p {
 	flex-grow: 1;
 	padding: 5px 15px;
 	margin: 0px;
@@ -107,7 +111,7 @@ article div p {
 	line-height: 16pt;
 }
 
-article div a {
+.post a {
 	align-self: flex-end;
 
 	color: white;
@@ -123,7 +127,7 @@ article div a {
 		width: 100%;
 		height: auto;
 	}
-	article div {
+	.post {
 		width: 100%;
 	}
 }

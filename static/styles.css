@@ -1,6 +1,8 @@
 body {
 	background-image: url(/static/forest-with-sunlight-158251.jpg);
 	background-attachment: fixed;
+	background-position: center center;
+	background-size: cover;
 
 	margin: 0;
 	color: white;

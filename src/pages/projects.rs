@@ -1,7 +1,7 @@
 use crate::api;
 use crate::types::Post;
 use anyhow::Error;
-use yew::{prelude::*, services::fetch::FetchTask, format::Json};
+use yew::{format::Json, prelude::*, services::fetch::FetchTask};
 
 pub enum Msg {
     GetPosts,
@@ -9,8 +9,14 @@ pub enum Msg {
     GetPostsError(Error),
 }
 
-pub struct Projects {
+struct State {
     posts: Vec<Post>,
+    get_posts_error: Option<Error>,
+    get_posts_loaded: bool,
+}
+
+pub struct Projects {
+    state: State,
     link: ComponentLink<Self>,
     task: Option<FetchTask>,
 }
@@ -23,7 +29,11 @@ impl Component for Projects {
         link.send_message(Msg::GetPosts);
 
         Self {
-            posts: Vec::new(),
+            state: State {
+                posts: Vec::new(),
+                get_posts_error: None,
+                get_posts_loaded: false,
+            },
             link,
             task: None,
         }
@@ -32,23 +42,27 @@ impl Component for Projects {
     fn update(&mut self, message: Self::Message) -> ShouldRender {
         match message {
             Msg::GetPosts => {
-                let handler =
-                    self.link
-                        .callback(move |response: api::FetchResponse<Vec<Post>>| {
-                            let (_, Json(data)) = response.into_parts();
-                            match data {
-                                Ok(products) => Msg::GetPostsSuccess(products),
-                                Err(err) => Msg::GetPostsError(err),
-                            }
-                        });
+                self.state.get_posts_loaded = false;
+                let handler = self
+                    .link
+                    .callback(move |response: api::FetchResponse<Vec<Post>>| {
+                        let (_, Json(data)) = response.into_parts();
+                        match data {
+                            Ok(products) => Msg::GetPostsSuccess(products),
+                            Err(err) => Msg::GetPostsError(err),
+                        }
+                    });
                 self.task = Some(api::get_posts(handler));
                 true
             }
             Msg::GetPostsSuccess(posts) => {
-                self.posts = posts;
+                self.state.posts = posts;
+                self.state.get_posts_loaded = true;
                 true
             }
             Msg::GetPostsError(error) => {
+                self.state.get_posts_error = Some(error);
+                self.state.get_posts_loaded = true;
                 true
             }
         }
@@ -60,11 +74,29 @@ impl Component for Projects {
 
     fn view(&self) -> Html {
         let posts = self
+            .state
             .posts
             .iter()
             .map(|post| post.to_html())
             .collect::<Vec<_>>();
 
-        html! { <>{posts}</> }
+        if !self.state.get_posts_loaded {
+            html! {
+              <div class="center-box center-items">
+                <div class="lds-dual-ring"></div>
+              </div>
+            }
+        } else if self.state.get_posts_error.is_some() {
+            html! {
+              <div class="center-box center-items">
+                <div class="black-box">
+                    <i class="fas fa-times"></i>
+                    <span class="error-msg">{"Error loading posts! :("}</span>
+                </div>
+              </div>
+            }
+        } else {
+            html! { <>{posts}</> }
+        }
     }
 }

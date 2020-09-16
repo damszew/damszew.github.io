@@ -73,6 +73,13 @@ body {
 	}
 }
 
+.center-box {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	position: fixed;
+}
+
 .center-items {
 	justify-content: center;
 	align-items: center;
@@ -160,6 +167,49 @@ article img {
 	color: gray;
 }
 
-  .fab:hover {
+.fab:hover {
 	opacity: 0.7;
+}
+
+.fas {
+	font-size: 50px;
+	text-align: center;
+}
+
+.error-msg {
+	font-size: 30px;
+	text-align: center;
+}
+
+.black-box {
+	display: flex;
+	flex-direction: column;
+	background-color: black;
+	opacity: 75%;
+	border-radius: 10px;
+	padding: 15px;
+}
+
+.lds-dual-ring {
+	display: inline-block;
+}
+
+.lds-dual-ring:after {
+	content: " ";
+	display: block;
+	width: 128px;
+	height: 128px;
+	border-radius: 50%;
+	border: 6px solid #fff;
+	border-color: #fff transparent #fff transparent;
+	animation: lds-dual-ring 1.6s linear infinite;
+}
+
+@keyframes lds-dual-ring {
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
 }

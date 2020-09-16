@@ -32,7 +32,7 @@ impl Component for About {
                 <br/>
                 <br/>
                 {"In my free time I like tinkering 🔧, learning new technologies 💻 and gym 💪.
-                My recent new favourite is ,"}<em>{"Rust"}</em>
+                My recent new favourite is "}<em>{"Rust"}</em>
                 {", so most of my personal projects are made with it."}
             </p>
         </div>

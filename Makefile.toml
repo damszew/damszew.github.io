@@ -90,7 +90,7 @@ args = ["test", "--headless", "--${@}", "--release"]
 
 [tasks.deploy]
 description = "Build wasm in release mode and together with index.html and static dir copy it to ${1}"
-dependencies = ["build_release"]
+dependencies = ["clean", "build_release"]
 script = [
     "mkdir -p ${1}",
     "cp -r index.html static/ ${1}",

@@ -25,7 +25,6 @@ before_script:
 check:
   stage: check
   script:
-  - cargo install cargo-make
   - cargo make check
 
 fmt:

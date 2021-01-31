@@ -177,7 +177,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "damszew_gitlab_io"
+name = "damszew_github_io"
 version = "0.1.0"
 dependencies = [
  "anyhow",

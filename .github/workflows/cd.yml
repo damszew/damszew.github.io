@@ -24,9 +24,8 @@ jobs:
         with:
           command: make
           args: deploy public
-      - uses: crazy-max/ghaction-github-pages@v2
+      - uses: peaceiris/actions-gh-pages@v3
         with:
-          target_branch: gh-pages
-          build_dir: public
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./public
+          force_orphan: true

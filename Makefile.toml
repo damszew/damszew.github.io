@@ -92,7 +92,9 @@ args = ["test", "--headless", "--${@}", "--release"]
 description = "Build wasm in release mode and together with index.html and static dir copy it to ${1}"
 dependencies = ["clean", "build_release"]
 script = [
+    "rm -rf ${1}/",
     "mkdir -p ${1}",
     "cp -r index.html static/ ${1}",
+    "rm pkg/.gitignore",
     "mv pkg/ ${1}",
 ]

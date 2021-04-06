@@ -1,4 +1,8 @@
-on: [push, pull_request]
+on:
+  push:
+    branches:
+      - main
+  pull_request:
 
 name: CI
 
@@ -29,7 +33,6 @@ jobs:
           name: clippy results
           token: ${{ secrets.GITHUB_TOKEN }}
           args: --all-features -- --deny warnings
-
   # test:
   #   needs: [check, fmt, clippy]
   #   runs-on: ubuntu-latest

@@ -35,7 +35,7 @@ dependencies = ["compile_release", "create_wasm_release"]
 [tasks.watch]
 description = "Build, create wasms, and watch/recompile files for changes"
 dependencies = ["build", "create_wasm"]
-watch = { ignore_pattern="pkg/*" }
+watch = { ignore_pattern = "pkg/*" }
 
 [tasks.serve]
 description = "Start server"

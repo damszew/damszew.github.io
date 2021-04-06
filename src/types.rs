@@ -1,4 +1,4 @@
-use crate::components::RawHTML;
+use crate::components::RawHtml;
 use comrak::{markdown_to_html, ComrakOptions};
 use serde::{Deserialize, Serialize};
 use yew::{html, Html};
@@ -21,7 +21,7 @@ impl Post {
                 <img class="" src={&self.image}/>
                 <div class="post">
                     <h1>{&self.title}</h1>
-                    <RawHTML inner_html={markdown_to_html(&self.description, &ComrakOptions::default())}/>
+                    <RawHtml inner_html={markdown_to_html(&self.description, &ComrakOptions::default())}/>
                     <a href={self.link.clone()}>{&self.link_label}</a>
                 </div>
             </article>

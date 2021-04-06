@@ -1,18 +1,18 @@
 use yew::{prelude::*, web_sys::Element};
 
 #[derive(Debug, Clone, Eq, PartialEq, Properties)]
-pub struct RawHTMLProps {
+pub struct RawHtmlProps {
     pub inner_html: String,
 }
 
-pub struct RawHTML {
-    props: RawHTMLProps,
+pub struct RawHtml {
+    props: RawHtmlProps,
     node_ref: NodeRef,
 }
 
-impl Component for RawHTML {
+impl Component for RawHtml {
     type Message = ();
-    type Properties = RawHTMLProps;
+    type Properties = RawHtmlProps;
 
     fn create(props: Self::Properties, _: ComponentLink<Self>) -> Self {
         Self {

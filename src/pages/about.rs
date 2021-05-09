@@ -28,12 +28,10 @@ impl Component for About {
                 <a href="https://gitlab.com/damszew" class="fab fa-gitlab"></a>
             </div>
             <p>
-                {"I'm professional C++ software developer also working with Yocto and CMake."}
+                <b>{"I'm a professional Rust developer"}</b> {" with some background in C++ and Yocto. Currently working on a more cloud/web related project."}
                 <br/>
                 <br/>
-                {"In my free time I like tinkering 🔧, learning new technologies 💻 and gym 💪.
-                My recent new favourite is "}<em>{"Rust"}</em>
-                {", so most of my personal projects are made with it."}
+                {"In my free time I like tinkering 🔧, learning new technologies 💻 and gym 💪."}
             </p>
         </div>
         }

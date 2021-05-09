@@ -1,5 +1,12 @@
 [
     {
+        "title": "TDD is a skill",
+        "image": "static/tdd-is-a-skill.png",
+        "description": "So to practice it, I've decided to write simple **TUI chat over mqtt** (with _payload encryption_ so it should be secure to use even on open brokers). At first I planned to also play a little with [actor model](https://en.wikipedia.org/wiki/Actor_model) but it ended up to be too big of a topic on its own, so I decided to tackle it later.\n\nso... TDD! I feel like the more I embrace its rules the easier it gets. This pet-project feels like a confirmation of this. I've written a lot of tests here (for such a small app) but there hasn't been a point where I felt they were slowing me down. Shout out to [test_case](https://github.com/frondeus/test-case) crate (maintained by colleague of mine who suggested it to me in the first place) as it was game changer to writing parameterized tests.\n\nI don't want to brag but I finally reached TDD level where going \"test-first\" feels natural for me. This in turn pushes me to write cleaner and more understandable code. So... I'm still improving but maybe someday I will become [TDD Ninja](https://www.parasoft.com/4-tips-for-adopting-test-driven-development-tdd-in-your-organization/)",
+        "link_label": "Check this project out at github",
+        "link": "https://github.com/damszew/rust-mqtt-chat"
+    },
+    {
         "title": "First open source contribution",
         "image": "static/merged_pr.png",
         "description": "Recently I started messing around with [godot-rust](https://github.com/godot-rust/godot-rust) and while doing so, I ran into one of these problems that felt like they should be easy to solve, but I couldn't get it to work. After some time, I decided to ask [\"How to use Godot's resources in rust bindings?\"](https://github.com/godot-rust/godot-rust/issues/559) Perhaps [\"Getting Started book\"](https://godot-rust.github.io/book/getting-started.html) will have a chapter on this topic, but for now, the simple example which I have prepared seems to be \"good enough\" solution to show others the basics of this library.\n\nIt was my first ever open source contribution. This is just a small example but first **merge** to open source project feels amazing. I can't wait to contribute to OSS again 🔥. ",

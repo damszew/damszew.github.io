@@ -2,3 +2,4 @@
 Cargo.lock
 public/
 pkg/
+static/styles.css

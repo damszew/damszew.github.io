@@ -1,9 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 body {
 	background-image: url(/static/forest-with-sunlight-158251.jpg);
 	background-attachment: fixed;
 	background-position: center center;
 	background-size: cover;
-
 	margin: 0;
 	color: white;
 }
@@ -17,12 +19,12 @@ body {
 	position: fixed;
 	overflow: auto;
 	opacity: 75%;
-
 	display: flex;
 	flex-direction: column;
 }
 
 /* Sidebar links */
+
 #sidebar a {
 	text-align: center;
 	width: 80%;
@@ -35,17 +37,20 @@ body {
 }
 
 /* Active/current link */
+
 #sidebar a.active {
 	background-color: gray;
 }
 
 /* Links on mouse-over */
+
 #sidebar a:hover:not(.active) {
 	background-color: #555;
 }
 
 #content {
-	margin-left: 25%; /* same as #sidebar width */
+	margin-left: 25%;
+	/* same as #sidebar width */
 	padding: 1px;
 	display: flex;
 	flex-direction: column;
@@ -53,6 +58,7 @@ body {
 }
 
 /* On screens that are less than 700px wide, make the sidebar into a topbar */
+
 @media screen and (max-width: 700px) {
 	#sidebar {
 		width: 100%;
@@ -66,6 +72,7 @@ body {
 }
 
 /* On screens that are less than 400px, display the bar vertically, instead of horizontally */
+
 @media screen and (max-width: 400px) {
 	#sidebar {
 		flex-direction: column;
@@ -92,7 +99,6 @@ body {
 	padding: 0px;
 	margin: 30px 0px;
 	background-color: black;
-
 	display: flex;
 }
 
@@ -122,7 +128,6 @@ article img {
 
 .post a {
 	align-self: flex-end;
-
 	color: white;
 	padding: 0px;
 	margin: 0px;
@@ -161,6 +166,7 @@ article img {
 }
 
 /* Style all font awesome icons */
+
 .fab {
 	font-size: 30px;
 	width: 40px;

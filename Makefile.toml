@@ -7,7 +7,7 @@ script = "npx tailwindcss-cli@latest build style/styles.css -c style/tailwind.co
 [tasks.tailwindcss_release]
 script = [
     "NODE_ENV=production npx tailwindcss-cli@latest build style/styles.css --minify --purge -c style/tailwind.config.js -o static/tailwind.big.css",
-    "rm static/styles.css",
+    "rm --force static/styles.css",
     "npx clean-css-cli@latest static/tailwind.big.css -o static/styles.css",
     "rm static/tailwind.big.css",
 ]

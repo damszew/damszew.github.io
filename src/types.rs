@@ -22,7 +22,7 @@ impl Post {
                 <div class="post">
                     <h1>{&self.title}</h1>
                     <RawHtml inner_html={markdown_to_html(&self.description, &ComrakOptions::default())}/>
-                    <a href={self.link.clone()}>{&self.link_label}</a>
+                    <a class="underline" href={self.link.clone()}>{&self.link_label}</a>
                 </div>
             </article>
         }

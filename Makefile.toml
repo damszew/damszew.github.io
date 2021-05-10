@@ -2,7 +2,8 @@
 PORT = "8000"
 
 [tasks.tailwindcss]
-script = "npx tailwindcss-cli@latest build style/styles.css -c style/tailwind.config.js -o static/styles.css"
+# script = "npx tailwindcss-cli@latest build style/styles.css -c style/tailwind.config.js -o static/styles.css"
+script = "docker run -v $PWD/style:/work/input -v $PWD/style/styles.css:/work/input/tailwind.css -v $PWD/static:/work/output -v $PWD:/work/source_code  matiu/tailwind-yew-builder npx tailwindcss-cli@latest build /work/input/tailwind.css --minify --purge -c /work/input/tailwind.config.js -o /work/output/styles.css"
 
 [tasks.tailwindcss_release]
 script = [

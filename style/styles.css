@@ -1,5 +1,9 @@
 @tailwind base;
 @tailwind components;
+.markdown a {
+	@apply underline;
+}
+
 @tailwind utilities;
 body {
 	background-image: url(/static/forest-with-sunlight-158251.jpg);

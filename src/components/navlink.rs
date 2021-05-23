@@ -47,15 +47,16 @@ impl Component for Navlink {
         type Anchor = RouterAnchor<Route>;
 
         let classes = if self.props.active {
-            &self.props.active_class
+            self.props.active_class.clone()
         } else {
-            ""
+            "".into()
         };
 
         let on_click = self.link.callback(|_| Msg::Clicked);
+        let page = self.props.page.clone();
 
         html! {
-            <Anchor route={&self.props.page} classes={classes}>
+            <Anchor route={page} classes={classes}>
                 <div onclick={on_click}>
                     {&self.props.label}
                 </div>

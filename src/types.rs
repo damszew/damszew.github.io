@@ -18,7 +18,7 @@ impl Post {
     pub fn to_html(&self) -> Html {
         html! {
             <article class="content-box">
-                <img class="" src={&self.image}/>
+                <img class="" src={self.image.clone()}/>
                 <div class="post">
                     <h1>{&self.title}</h1>
                     <RawHtml inner_html={markdown_to_html(&self.description, &ComrakOptions::default())}/>

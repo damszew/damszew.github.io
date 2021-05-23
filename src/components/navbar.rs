@@ -52,17 +52,17 @@ impl Component for Navbar {
         html! {
             <div id="sidebar" class="center-items">
                 <Navlink
-                    label={"My projects"},
-                    page={Route::ProjectsPage},
-                    active={self.current_page == Route::ProjectsPage.into()},
-                    active_class={"active"},
+                    label={"My projects"}
+                    page={Route::ProjectsPage}
+                    active={self.current_page == Route::ProjectsPage.into()}
+                    active_class={"active"}
                     on_clicked={self.link.callback(|_| Msg::Change(Route::ProjectsPage))}
                 />
                 <Navlink
-                    label={"About Me"},
-                    page={Route::AboutMePage},
-                    active={self.current_page == Route::AboutMePage.into()},
-                    active_class={"active"},
+                    label={"About Me"}
+                    page={Route::AboutMePage}
+                    active={self.current_page == Route::AboutMePage.into()}
+                    active_class={"active"}
                     on_clicked={self.link.callback(|_| Msg::Change(Route::AboutMePage))}
                 />
             </div>

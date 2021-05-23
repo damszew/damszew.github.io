@@ -1,5 +1,12 @@
 [
     {
+        "title": "Rusty cucumber",
+        "image": "static/bdd-tests.gif",
+        "description": "Almost as a follow-up to the previous project, this time I delved into the world of TDD and experimented a bit with **BDD** and **ATDD** approaches to software development. This time I created a simple authentication service with a REST API, but __focused on first writing acceptance tests with [cucumber-rust](https://github.com/bbqsrc/cucumber-rust)__ and only then implementing the functionality.\n\nI'll be honest, writing test scenarios in [gherkin](https://cucumber.io/docs/gherkin/reference/) and DSLs in a separate file in rust was liberating. Once written, the scenarios never changed, and I could still incrementally tweak the DSLs -> Tests didn't require me to rigidly specify the API upfront. Not to mention that the *\"Given, When, Then\"* structure naturally steered me towards cleaner and simpler tests.\n\nFrom now on you can safely call me a BDD and ATDD fanatic 🤓.",
+        "link_label": "Take a look at it on github",
+        "link": "https://github.com/damszew/damszew.github.io"
+    },
+    {
         "title": "TDD is a skill",
         "image": "static/tdd-is-a-skill.png",
         "description": "So to practice it, I've decided to write simple **TUI chat over mqtt** (with _payload encryption_ so it should be secure to use even on open brokers). At first I planned to also play a little with [actor model](https://en.wikipedia.org/wiki/Actor_model) but it ended up to be too big of a topic on its own, so I decided to tackle it later.\n\nso... TDD! I feel like the more I embrace its rules the easier it gets. This pet-project feels like a confirmation of this. I've written a lot of tests here (for such a small app) but there hasn't been a point where I felt they were slowing me down. Shout out to [test_case](https://github.com/frondeus/test-case) crate (maintained by colleague of mine who suggested it to me in the first place) as it was game changer to writing parameterized tests.\n\nI don't want to brag but I finally reached TDD level where going \"test-first\" feels natural for me. This in turn pushes me to write cleaner and more understandable code. So... I'm still improving but maybe someday I will become [TDD Ninja](https://www.parasoft.com/4-tips-for-adopting-test-driven-development-tdd-in-your-organization/)",

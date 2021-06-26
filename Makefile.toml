@@ -1,13 +1,14 @@
 [env]
 PORT = "8000"
+TAILWIND_CMD = "npx tailwindcss-cli@latest build -i style/styles.css -c style/tailwind.config.js -o static/styles.css"
 
 [tasks.tailwindcss]
-script = "npx tailwindcss-cli@latest build style/styles.css -c style/tailwind.config.js -o static/styles.css"
-# script = "docker run -v $PWD/style:/work/input -v $PWD/style/styles.css:/work/input/tailwind.css -v $PWD/static:/work/output -v $PWD:/work/source_code  matiu/tailwind-yew-builder npx tailwindcss-cli@latest build /work/input/tailwind.css --minify --purge -c /work/input/tailwind.config.js -o /work/output/styles.css"
+script = "${TAILWIND_CMD}"
+# script = "docker run -v $PWD/style:/work/input -v $PWD/style/styles.css:/work/input/tailwind.css -v $PWD/style/tailwind.config.js:/work/input/tailwind.config.js -v $PWD/static:/work/output -v $PWD:/work/source_code  matiu/tailwind-yew-builder npx tailwindcss-cli@latest build /work/input/tailwind.css --minify --purge -c /work/input/tailwind.config.js -o /work/output/styles.css"
 
 [tasks.tailwindcss_release]
 script = [
-    "NODE_ENV=production npx tailwindcss-cli@latest build style/styles.css --minify --purge -c style/tailwind.config.js -o static/tailwind.big.css",
+    "NODE_ENV=production ${TAILWIND_CMD} --minify --purge",
     "rm --force static/styles.css",
     "npx clean-css-cli@latest static/tailwind.big.css -o static/styles.css",
     "rm static/tailwind.big.css",

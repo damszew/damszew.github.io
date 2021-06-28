@@ -20,14 +20,14 @@ impl Component for About {
 
     fn view(&self) -> Html {
         html! {
-            <div class="content-box about_me">
-            <h1>{"Damian Szewczyk"}</h1>
-            <div class="social_icons">
+            <div class="content-box flex-col">
+            <h1 class="flex justify-center my-6 text-5xl">{"Damian Szewczyk"}</h1>
+            <div class="flex justify-center">
                 <a href="https://www.linkedin.com/in/szewczyk-damian" class="fab fa-linkedin"></a>
                 <a href="https://github.com/damszew" class="fab fa-github"></a>
                 <a href="https://gitlab.com/damszew" class="fab fa-gitlab"></a>
             </div>
-            <p>
+            <p class="m-6">
                 <b>{"I'm a professional Rust developer"}</b> {" with some background in C++ and Yocto. Currently working on a more cloud/web related project."}
                 <br/>
                 <br/>

@@ -150,25 +150,6 @@ article img {
 	}
 }
 
-.about_me {
-	flex-direction: column;
-}
-
-.about_me h1 {
-	justify-content: center;
-	margin: 30px auto;
-	font-size: xxx-large;
-}
-
-.about_me p {
-	margin: 30px;
-}
-
-.social_icons {
-	display: flex;
-	justify-content: center;
-}
-
 /* Style all font awesome icons */
 
 .fab {

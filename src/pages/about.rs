@@ -20,7 +20,7 @@ impl Component for About {
 
     fn view(&self) -> Html {
         html! {
-            <div class="content-box flex-col">
+            <div class="flex flex-col w-4/5 p-0 my-8 bg-black">
             <h1 class="flex justify-center my-6 text-5xl">{"Damian Szewczyk"}</h1>
             <div class="flex justify-center">
                 <a href="https://www.linkedin.com/in/szewczyk-damian" class="fab fa-linkedin"></a>

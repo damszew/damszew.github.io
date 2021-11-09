@@ -1,5 +1,5 @@
-/target
-Cargo.lock
-public/
-pkg/
-static/styles.css
+_site
+.sass-cache
+.jekyll-cache
+.jekyll-metadata
+vendor

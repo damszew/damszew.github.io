@@ -6,8 +6,10 @@
         {
             "label": "Start jekyll with drafts and futures",
             "type": "shell",
-            "command": "jekyll",
+            "command": "bundle",
             "args": [
+                "exec",
+                "jekyll",
                 "serve",
                 "--livereload",
                 "--drafts",

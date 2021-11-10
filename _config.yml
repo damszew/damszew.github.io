@@ -18,25 +18,33 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 
+# theme: jekyll-agency
+remote_theme: raviriley/agency-jekyll-theme
+
+# favicon: assets/favicon.ico
+# domain: damszew.github.io
+url: "https://damszew.github.io"
+baseurl: ""
+
 title: Damian Szewczyk's personal website
 email: damian.szewczyk111@gmail.com
 description: >- # this means to ignore newlines until "baseurl:"
   Page description
+author: Damian
 
-favicon: assets/favicon.ico
-domain: damszew.github.io
-url: "https://damszew.github.io"
-baseurl: ""
+# github_username: damszew
+# linkedin_username: szewczyk-damian
+# twitter_username: damszew
 
-github_username: damszew
-linkedin_username: szewczyk-damian
-twitter_username: damszew
+locale: "en-US" 
 
-# Build settings
-theme: jekyll-agency
-
-plugins:
-  - jekyll-feed
+analytics:
+  google: #Google Analytics tracking code here
 
 collections:
   portfolio:
+
+markdown: kramdown
+
+plugins:
+  - jekyll-remote-theme

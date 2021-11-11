@@ -18,8 +18,7 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 
-# theme: jekyll-agency
-remote_theme: raviriley/agency-jekyll-theme
+theme: jekyll-agency
 
 # favicon: assets/favicon.ico
 # domain: damszew.github.io
@@ -36,8 +35,6 @@ author: Damian
 # linkedin_username: szewczyk-damian
 # twitter_username: damszew
 
-locale: "en-US" 
-
 analytics:
   google: #Google Analytics tracking code here
 
@@ -45,6 +42,3 @@ collections:
   portfolio:
 
 markdown: kramdown
-
-plugins:
-  - jekyll-remote-theme

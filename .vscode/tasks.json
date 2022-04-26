@@ -16,6 +16,18 @@
                 "--future",
             ],
             "problemMatcher": []
+        },
+        {
+            "label": "Start jekyll",
+            "type": "shell",
+            "command": "bundle",
+            "args": [
+                "exec",
+                "jekyll",
+                "serve",
+                "--livereload",
+            ],
+            "problemMatcher": []
         }
     ]
 }

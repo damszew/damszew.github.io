@@ -16,7 +16,8 @@
 		"rebornix.Ruby",
 		"davidanson.vscode-markdownlint",
 		"yzhang.markdown-all-in-one",
-		"streetsidesoftware.code-spell-checker"
+		"streetsidesoftware.code-spell-checker",
+		"seatonjiang.gitmoji-vscode",
 	],
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	"forwardPorts": [

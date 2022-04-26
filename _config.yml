@@ -18,27 +18,40 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 
-theme: jekyll-agency
-
-# favicon: assets/favicon.ico
-# domain: damszew.github.io
-url: "https://damszew.github.io"
-baseurl: ""
-
-title: Damian Szewczyk
+title: TDD Skills
 email: damian.szewczyk111@gmail.com
 description: >- # this means to ignore newlines until "baseurl:"
-  Page description
-author: Damian
+  Blog about exploring how TDD (and related methodologies like BDD, ATDD
+  or even Continuos Delivery) allow us devs to write better quality software, faster.
 
-# github_username: damszew
-# linkedin_username: szewczyk-damian
-# twitter_username: damszew
+domain: damszew.github.io
+url: "https://damszew.github.io"
+baseurl: "/tdd-skills"
+github_username: damszew
+linkedin_username: szewczyk-damian
+twitter_username: damszew
 
-analytics:
-  google: #Google Analytics tracking code here
+# Build settings
+theme: jekyll-theme-yat
 
-collections:
-  portfolio:
-
-markdown: kramdown
+plugins:
+  - jekyll-feed
+# Exclude from processing.
+# The following items will not be processed, by default.
+# Any item listed under the `exclude:` key here will be automatically added to
+# the internal "default list".
+#
+# Excluded items can be processed by explicitly listing the directories or
+# their entries' file path in the `include:` list.
+#
+# exclude:
+#   - .sass-cache/
+#   - .jekyll-cache/
+#   - gemfiles/
+#   - Gemfile
+#   - Gemfile.lock
+#   - node_modules/
+#   - vendor/bundle/
+#   - vendor/cache/
+#   - vendor/gems/
+#   - vendor/ruby/

@@ -1,12 +1,12 @@
-title: TDD Skills
+title: Damian Szewczyk
 email: damian.szewczyk111@gmail.com
 description: >-
-  Blog about exploring how TDD (and related methodologies like BDD, ATDD
-  or even Continuos Delivery) allow us devs to write better quality software, faster.
+  Personal blog for sharing thoughts about different practices and patters 
+  used to create clean and efficient software
 
 domain: damszew.github.io
 url: "https://damszew.github.io"
-baseurl: "/tdd-skills"
+baseurl: "/"
 github_username: damszew
 linkedin_username: szewczyk-damian
 twitter_username: damszew

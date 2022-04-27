@@ -11,6 +11,11 @@ linkedin_username: szewczyk-damian
 twitter_username: damszew
 
 theme: jekyll-theme-yat
+# Theme specific settings
+defaults:
+  home:
+    heading: damszew.github.io
+    subheading: A personal blog
 
 plugins:
   - jekyll-feed

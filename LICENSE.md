@@ -1,4 +1,18 @@
-MIT License
+# Articles
+
+All the files inside `_posts/` and `_drafts` directory are licensed under
+[CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). The attribution requirement is only met when:
+
+1. The canonical link is directed towards the original article, e.g.
+   `<link rel="canonical" href="https://damszew.github.io/2021/08/05/what-is-a-tdd-in-practice.html" />`
+2. The following message is displayed above and below the article:
+   `This article has been originally published on <a href="https://damszew.github.io">TDD Skills website</a>.`
+
+# Other files
+
+Files not mentioned in previous paragraphs are licensed under [MIT License](#mit-license).
+
+## MIT License
 
 Copyright (c) 2020 Damian Szewczyk
 

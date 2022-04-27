@@ -1,8 +1,8 @@
 # damszew.github.io
 
-damszew.github.io is a personal web page used to share pet projects.
+Personal blog for sharing thoughts about different practices and patters used to create clean and efficient software
 
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
+See the [LICENSE.md](LICENSE.md) file for details.

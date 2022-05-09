@@ -16,6 +16,7 @@ defaults:
   home:
     heading: damszew.github.io
     subheading: A personal blog
+night_mode: "manual"
 
 plugins:
   - jekyll-feed

@@ -8,3 +8,8 @@ On this blog, I'm sharing my thoughts about different practices, patterns or met
 On daily basis, I'm Rust developer with C++ background. Currently, I'm working on critical path system for energy sector which involves performing real-time operations on high volume, high frequency data streams.
 
 In my free time I like tinkering 🔧, learning new technologies 💻 and gym 💪.
+
+My social links:
+- [Github](https://github.com/damszew)
+- [LinkedIn](https://www.linkedin.com/in/szewczyk-damian/)
+- [Twitter](https://twitter.com/damszew)

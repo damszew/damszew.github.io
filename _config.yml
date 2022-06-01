@@ -16,7 +16,18 @@ defaults:
   home:
     heading: damszew.github.io
     subheading: A personal blog
+
+banner:
+  image: ""
+  background: "#217040"
+
 night_mode: "manual"
+brand_color: "#299654"
+code_badge:
+  enabled: "true"
+  color: "#fff"
+  background_color: "#299654"
+  text_transform: "lowercase"  # ("uppercase", "lowercase", "capitalize")
 
 plugins:
   - jekyll-feed

@@ -18,15 +18,16 @@ defaults:
     subheading: A personal blog
 
 banner:
-  image: ""
-  background: "#217040"
+  image: "assets/images/leaves.jpg"
+  background: "#000000"
+  opacity: 0.7
 
 night_mode: "manual"
-brand_color: "#299654"
+brand_color: "#588E5D"
 code_badge:
   enabled: "true"
   color: "#fff"
-  background_color: "#299654"
+  background_color: "#588E5D"
   text_transform: "lowercase"  # ("uppercase", "lowercase", "capitalize")
 
 plugins:

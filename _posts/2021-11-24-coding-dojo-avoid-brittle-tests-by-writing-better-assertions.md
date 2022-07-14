@@ -340,7 +340,7 @@ better and more understandable assertions.
 
 What are your thoughts about this kata? What other katas can you recommend? Comment down below!
 
-[brittle tests reasons]: {% post_url 2021-09-08-what-is-a-tdd-in-practice %}#h-brittle-tests
+[brittle tests reasons]: {% post_url 2021-09-08-what-is-a-tdd-in-practice %}#h-fragile-tests
 [repo]: <https://github.com/damszew/kata-emloyee-report>
 [brittle test]: ##brittle-tests
 [hamcrest]: <https://docs.rs/hamcrest2/0.3.0/hamcrest2/>

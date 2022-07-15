@@ -12,11 +12,6 @@ twitter_username: damszew
 
 theme: jekyll-theme-yat
 # Theme specific settings
-defaults:
-  home:
-    heading: damszew.github.io
-    subheading: A personal blog
-
 banner:
   image: "assets/images/leaves.jpg"
   background: "#000000"
@@ -29,6 +24,13 @@ code_badge:
   color: "#fff"
   background_color: "#588E5D"
   text_transform: "lowercase"  # ("uppercase", "lowercase", "capitalize")
+
+defaults:
+  - scope:
+      path: ""
+    values:
+      image: /assets/images/leaves.jpg
+      alt: Photo of dark green leaves
 
 plugins:
   - jekyll-feed

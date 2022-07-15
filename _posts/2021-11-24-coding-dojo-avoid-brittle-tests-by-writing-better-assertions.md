@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Coding dojo: Avoid brittle tests by writing better assertions"
-tags: kata coding-dojo walkthrough employee-report
+tags: TDD coding-dojo
 ---
 
 Welcome to my coding dojo. In this installment, I'll walk you through an **employee report kata**.

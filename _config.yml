@@ -17,6 +17,7 @@ banner:
   background: "#000000"
   opacity: 0.7
 
+translate_langs: []
 night_mode: "manual"
 brand_color: "#588E5D"
 code_badge:

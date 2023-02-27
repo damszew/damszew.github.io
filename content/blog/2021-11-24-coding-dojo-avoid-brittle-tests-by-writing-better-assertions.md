@@ -1,8 +1,9 @@
----
-layout: post
-title:  "Coding dojo: Avoid brittle tests by writing better assertions"
-tags: TDD coding-dojo
----
++++
+title = "Coding dojo: Avoid brittle tests by writing better assertions"
+
+[taxonomies]
+tags = ["TDD", "coding-dojo"]
++++
 
 Welcome to my coding dojo. In this installment, I'll walk you through an **employee report kata**.
 Kata that is designed **to show how over-specification leads to brittle tests**

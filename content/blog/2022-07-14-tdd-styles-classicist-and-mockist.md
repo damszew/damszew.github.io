@@ -1,8 +1,9 @@
----
-layout: post
-title:  "TDD styles - Classicist and Mockist"
-tags: TDD
----
++++
+title = "TDD styles - Classicist and Mockist"
+
+[taxonomies]
+tags = ["TDD"]
++++
 
 TDD is a great method to develop software in wast number of cases. Over time, many developers tweak their approach to better suit their needs. Most famous examples of that are the Classicist and the Mockist styles of TDD.
 

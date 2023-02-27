@@ -1,0 +1,42 @@
+# The URL the site will be built for
+base_url = "https://damszew.github.io"
+theme = "tabi"
+title = "damszew"
+author = "Damian Szewczyk"
+description = "Personal blog for sharing thoughts about different practices and patters used to create clean and efficient software"
+
+generate_feed = true
+compile_sass = true
+
+# Whether to build a search index to be used later on by a JavaScript library
+build_search_index = false
+
+taxonomies = [{ name = "tags", feed = true }]
+
+[markdown]
+highlight_code = true
+highlight_theme = "css"
+smart_punctuation = true
+
+[extra]
+skin = "mint"
+favicon_emoji = "🦁"
+menu = [
+    { name = "blog", url = "blog", trailing_slash = true },
+    { name = "tags", url = "tags", trailing_slash = true },
+    # { name = "projects", url = "projects", trailing_slash = true },
+    { name = "about", url = "about", trailing_slash = true },
+]
+
+# Usability
+quick_navigation_buttons = true
+copy_button = true
+toc = true
+
+# Footer
+socials = [{ name = "github", url = "https://github.com/damszew", icon = "github" }, { name = "linkedin", url = "https://www.linkedin.com/in/szewczyk-damian/", icon = "linkedin" }, { name = "twitter", url = "https://twitter.com/damszew/", icon = "twitter" }]
+feed_icon = true
+full_content_in_feed = true
+
+# Metadata
+show_reading_time = true

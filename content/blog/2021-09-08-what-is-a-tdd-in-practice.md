@@ -1,8 +1,9 @@
----
-layout: post
-title:  "TDD == Development made right"
-tags: TDD
----
++++
+title = "TDD == Development made right"
+
+[taxonomies]
+tags = ["TDD"]
++++
 
 **TDD** _(Test-Driven Development)_ has forever changed the way I write code.
 In this post, I'll show you how TDD helps you create better software and make it faster.

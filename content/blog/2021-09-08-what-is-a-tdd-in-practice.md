@@ -31,7 +31,7 @@ work our way up even when we have to satisfy complicated requirements.
 
 Starting each cycle with a failing test is very important. This step will tell us if there is more functionality needed to be coded.
 **If I can't come up with a scenario for a falling test, it means my work on this piece of code is done.**
-I can still work on optimizing code but no new logic is needed (and therefore shouldn't be added aka. [YAGNI]).
+I can still work on optimizing code but no new logic is needed (and therefore shouldn't be added aka. [YAGNI](https://en.wikipedia.org/wiki/You_aren%27t_gonna_need_it)).
 
 ### Green
 
@@ -161,6 +161,3 @@ But also remember, if any of your tools doesn't help you anymore -
 don't be afraid to throw it away or replace it with a new one (refactor also tests).
 
 What do you think about TDD? Is this methodology returning to favor, or has it been abandoned long ago?  Comment down below!
-
-<!-- Links -->
-[YAGNI]: https://en.wikipedia.org/wiki/You_aren%27t_gonna_need_it

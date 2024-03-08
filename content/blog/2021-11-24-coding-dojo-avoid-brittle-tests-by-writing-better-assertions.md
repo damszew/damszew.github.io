@@ -38,7 +38,7 @@ Brittle tests lower our confidence in making changes. They can lead to huge main
 > As the system changes we find ourselves spending more time fixing broken tests.
 
 If you have ever had a similar thought, it's because of brittle tests.
-One of [brittle tests reasons] is "too many assertions" or in other words over-specification.
+One of [brittle tests reasons](@/blog/2021-09-08-what-is-a-tdd-in-practice.md#fragile-tests) is "too many assertions" or in other words over-specification.
 
 Let's take a look at kata that will teach us how not to over-specify our test cases,
 so we write assertions for what was really required and nothing more.
@@ -54,7 +54,7 @@ Due to legal constraints, only employees of legal age can work on Sundays,
 A client asks us to implement a feature to the staff management system that will
 get him a list of employees that can work on Sundays.
 
-All codes shown in this post and the full solution written in rust can be found in this [repo].
+All codes shown in this post and the full solution written in rust can be found in this [repo](https://github.com/damszew/kata-emloyee-report).
 
 ### 1st user story
 
@@ -174,7 +174,7 @@ We can clearly see that the code still satisfies requirements from 1st user stor
 
 We've **overspecified** our `return_employees_older_than_18` test case by requiring that
 returned staff members will be not only above 18 years old but also they will be returned in predefined order - first is Sepp and second is Mike. **We've ended up with
-[brittle test].**
+[brittle test](#brittle-tests).**
 
 Let's take a step back and improve the first test case so it checks what really was intended in that user story.
 I'll quickly remind - we were supposed to return employees that are older than 18. Let's check just for that:
@@ -335,13 +335,8 @@ This kata teaches us how to think about assertions so they can represent require
 It may be eye-opening to some people that are new to TDD and a great refresher
 to more experienced devs.
 
-As a side note, I highly recommend using assertions with matchers like [hamcrest].
+As a side note, I highly recommend using assertions with matchers like [hamcrest](https://docs.rs/hamcrest2/0.3.0/hamcrest2/).
 We haven't used it here but matchers are a great tool that will help you write
 better and more understandable assertions.
 
 What are your thoughts about this kata? What other katas can you recommend? Comment down below!
-
-[brittle tests reasons]: {% post_url 2021-09-08-what-is-a-tdd-in-practice %}#h-fragile-tests
-[repo]: <https://github.com/damszew/kata-emloyee-report>
-[brittle test]: ##brittle-tests
-[hamcrest]: <https://docs.rs/hamcrest2/0.3.0/hamcrest2/>

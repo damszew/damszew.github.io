@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="https://damszew.github.io/sitemap_style.xsl" type="text/xsl"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url>
+        <loc>https://damszew.github.io/</loc>
+    </url>
+    <url>
+        <loc>https://damszew.github.io/about/</loc>
+    </url>
+    <url>
+        <loc>https://damszew.github.io/blog/</loc>
+    </url>
+    <url>
+        <loc>https://damszew.github.io/blog/coding-dojo-avoid-brittle-tests-by-writing-better-assertions/</loc>
+        <lastmod>2021-11-24</lastmod>
+    </url>
+    <url>
+        <loc>https://damszew.github.io/blog/page/1/</loc>
+    </url>
+    <url>
+        <loc>https://damszew.github.io/blog/tdd-styles-classicist-and-mockist/</loc>
+        <lastmod>2022-07-14</lastmod>
+    </url>
+    <url>
+        <loc>https://damszew.github.io/blog/what-is-a-tdd-in-practice/</loc>
+        <lastmod>2021-09-08</lastmod>
+    </url>
+    <url>
+        <loc>https://damszew.github.io/tags/</loc>
+    </url>
+    <url>
+        <loc>https://damszew.github.io/tags/coding-dojo/</loc>
+    </url>
+    <url>
+        <loc>https://damszew.github.io/tags/tdd/</loc>
+    </url>
+</urlset>

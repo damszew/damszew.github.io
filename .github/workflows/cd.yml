@@ -11,8 +11,24 @@ jobs:
     steps:
       - name: 📂 setup
         uses: actions/checkout@v4
-      - name: 🔨 build & 🚀 deploy
-        uses: shalzz/zola-deploy-action@v0.17.2
+      - name: Check 🕵️
+        uses: shalzz/zola-deploy-action@v0.18.0
         env:
-          PAGES_BRANCH: gh-pages
-          TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          CHECK_LINKS: true
+          BUILD_ONLY: true
+
+      - name: Install Nix ⚒️
+        uses: DeterminateSystems/nix-installer-action@main
+      - name: Setup nix cache 📝
+        uses: DeterminateSystems/magic-nix-cache-action@main
+    
+        # TODO: Set this up when contributes are more frequent
+        # - name: Check Nixpkgs inputs 🔍
+        #   uses: DeterminateSystems/flake-checker-action@main
+        #   with:
+        #     fail-mode: true
+    
+      - name: Flake check ❄️
+        run: nix flake check --print-build-logs
+
+        # TODO: deploy-rs

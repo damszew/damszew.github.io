@@ -1,0 +1,35 @@
+<header>
+    <nav class="navbar">
+        <div class="nav-title">
+            <a class="home-title" href={{ get_url(path="/", lang=lang) }}>{{ config.title }}</a>
+        </div>
+
+        {%- if config.extra.menu %}
+            <div class="nav-navs">
+                <ul>
+                    {%- if config.extra.menu %}
+                        {% for menu in config.extra.menu %}
+                            <li>
+                                {% set trailing_slash = menu.trailing_slash | default(value=true) %}
+                                <a class="nav-links no-hover-padding" href="{{ get_url(path=menu.url, lang=lang, trailing_slash=trailing_slash) }}">
+                                {{ macros_translate::translate(key=menu.name, default=menu.name, language_strings=language_strings) }}
+                                </a>
+                            </li>
+                        {% endfor %}
+                    {%- endif -%}
+
+                    {# Language switcher #}
+                    {# Display the language switcher only if more than one language is available #}
+                    {%- if config.languages | length > 0 %}
+                    {% include "partials/language_switcher.html" %}
+                    {%- endif %}
+
+                    {# Theme switcher #}
+                    {%- if config.extra.theme_switcher and config.extra.theme_switcher == true -%}
+                    {%- include "partials/theme_switcher.html" -%}
+                    {%- endif -%}
+                </ul>
+            </div>
+        {% endif %}
+    </nav>
+</header>

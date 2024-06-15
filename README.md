@@ -1,4 +1,4 @@
-# damszew.github.io
+# damszew.dev
 
 Personal blog for sharing thoughts about different practices and patters used to create clean and efficient software
 

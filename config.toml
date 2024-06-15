@@ -1,5 +1,5 @@
 # The URL the site will be built for
-base_url = "https://damszew.github.io"
+base_url = "https://damszew.dev"
 theme = "tabi"
 title = "damszew"
 author = "Damian Szewczyk"

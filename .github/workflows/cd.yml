@@ -21,14 +21,41 @@ jobs:
         uses: DeterminateSystems/nix-installer-action@main
       - name: Setup nix cache 📝
         uses: DeterminateSystems/magic-nix-cache-action@main
-    
+
         # TODO: Set this up when contributes are more frequent
         # - name: Check Nixpkgs inputs 🔍
         #   uses: DeterminateSystems/flake-checker-action@main
         #   with:
         #     fail-mode: true
-    
-      - name: Flake check ❄️
-        run: nix flake check --print-build-logs
 
-        # TODO: deploy-rs
+      - name: Flake check 🕵️
+        run: nix flake check --print-build-logs
+      - name: Check deploy schema 📐
+        run: nix build -L .#checks.deploy-schema
+        if: success() || failure()
+      - name: Check deploy activate 💪🏻
+        run: nix build -L .#checks.deploy-activate
+
+      - name: Configure 1password 1️⃣
+        uses: 1password/load-secrets-action/configure@v1
+        with:
+          service-account-token: ${{ secrets.OP_SERVICE_ACCOUNT_TOKEN }}
+      - name: Setup secrets 🤫
+        uses: 1password/load-secrets-action@v1
+        env:
+          PERUN_IP: op://damszew.dev/Perun/URL
+          SSH_PRIVATE_KEY: op://damszew.dev/deploy_ssh_key/private key
+
+      - name: Add perun to hosts ⚡
+        run: sudo echo "${{ steps.op-load-secret.outputs.PERUN_IP }} perun" | sudo tee -a /etc/hosts
+      - name: Setup ssh key 🔐
+        uses: webfactory/ssh-agent@v0.9.0
+        with:
+          ssh-private-key: ${{ steps.op-load-secret.outputs.SSH_PRIVATE_KEY }}
+      - name: Setup ssh/known_hosts 💁
+        run: |
+          mkdir -p ~/.ssh && touch ~/.ssh/known_hosts
+          ssh-keyscan perun >> ~/.ssh/known_hosts
+
+      - name: deploy 
+        run: nix develop -c deploy --skip-checks # checks are performed earlier in pipeline

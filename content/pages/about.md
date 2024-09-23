@@ -4,13 +4,26 @@ template = "info-page.html"
 path = "about"
 +++
 
-I’m a Rust developer with C++ background.
-I've worked on:
+Experienced Rust Developer with a strong background in C++ and an interest in drones.
 
-- embedded distributed system of base stations that communicate with each other to route calls.
-- a critical path system for the energy sector which involves performing real-time operations on high volume, high-frequency data streams.
-- backend for mobile app and CMS for online casinos
+I'm a software developer with a background in C++, though these days my focus is entirely on Rust.
+I've worked on a range of projects, from building backend systems to developing real-time data streaming solutions,
+with experience spanning embedded systems in telecom to large-scale monitoring systems for critical infrastructure.
 
-I'm a technology enthusiast. In my free time, I'm always coding something new. It can be another pet project that serves me as an example to describe concepts that I'm currently hyped about (mainly related to TDD) on my blog or setup of home k8s cluster on RPis, just to over-engineer smart light bulb controls and learn cloud-native solutions in the meantime. I also enjoy jogging tho'.
+In my free time, I’m always experimenting - whether it's coding pet projects to explore concepts
+or diving into new programming challenges just for fun.
+I love pushing the boundaries of what’s possible with tech
+and often share my thoughts on software development through my blog.
 
-In this blog, I'm sharing my thoughts about different practices, patterns, or methodologies used in software development.
+Oh, and I like to hit the gym too!
+
+---
+
+List of articles that had great impact on my software development
+
+- ["The Grug Brained Developer"](https://grugbrain.dev/)
+- ["Parse, don’t validate" by Alexis King](https://lexi-lambda.github.io/blog/2019/11/05/parse-don-t-validate/)
+- ["All you need is data and functions" by Kayla Washburn-Love](https://mckayla.blog/posts/all-you-need-is-data-and-functions.html)
+- ["Test-induced design damage" by David Heinemeier Hansson](https://dhh.dk/2014/test-induced-design-damage.html)
+- ["Slow database test fallacy" by David Heinemeier Hansson](https://dhh.dk/2014/slow-database-test-fallacy.html)
+- ["Impureim sandwich" by Mark Seemann](https://blog.ploeh.dk/2020/03/02/impureim-sandwich/)

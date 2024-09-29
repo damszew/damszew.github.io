@@ -5,7 +5,7 @@ title = "damszew"
 author = "Damian Szewczyk"
 description = "Personal blog for sharing thoughts about different practices and patters used to create clean and efficient software"
 
-generate_feed = true
+generate_feeds = true
 compile_sass = true
 
 # Whether to build a search index to be used later on by a JavaScript library

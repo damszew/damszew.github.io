@@ -1,8 +1,8 @@
 +++
-title = "Coding dojo: Avoid brittle tests by writing better assertions"
+title = "Coding Dojo: Avoid Brittle Tests by Writing Better Assertions"
 
 [taxonomies]
-tags = ["TDD", "coding-dojo"]
+tags = ["tdd", "coding-dojo"]
 +++
 
 Welcome to my coding dojo. In this installment, I'll walk you through an **employee report kata**.

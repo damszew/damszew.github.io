@@ -1,8 +1,8 @@
 +++
-title = "TDD == Development made right"
+title = "TDD == Development Made Right"
 
 [taxonomies]
-tags = ["TDD"]
+tags = ["tdd"]
 +++
 
 **TDD** _(Test-Driven Development)_ has forever changed the way I write code.

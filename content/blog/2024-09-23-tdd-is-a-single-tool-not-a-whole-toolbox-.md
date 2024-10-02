@@ -1,8 +1,8 @@
 +++
-title = "TDD is a Single Tool - Not a Whole Toolbox"
+title = "TDD Is Just a Single Tool - Not a Whole Toolbox"
 
 [taxonomies]
-tags = ["my-pov"]
+tags = ["rants-n-rambles"]
 +++
 
 Today, I'm a much more pragmatic software developer than I used to be.

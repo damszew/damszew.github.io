@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="https://damszew.dev/feed_style.xsl" type="text/xsl"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+    <tabi:metadata xmlns:tabi="https://github.com/welpo/tabi">
+        <tabi:separator>
+            •
+        </tabi:separator>
+        <tabi:about_feeds>This is a web feed, also known as an Atom feed. Subscribe by copying the URL from the address bar into your newsreader. Visit About Feeds to learn more and get started. It&#x27;s free.</tabi:about_feeds>
+        <tabi:visit_the_site>Visit website</tabi:visit_the_site>
+        <tabi:recent_posts>Recent posts</tabi:recent_posts>
+        <tabi:last_updated_on>Updated on $DATE</tabi:last_updated_on>
+        <tabi:default_theme></tabi:default_theme>
+        <tabi:post_listing_date>date</tabi:post_listing_date>
+        <tabi:current_section>rants-n-rambles</tabi:current_section>
+    </tabi:metadata><link rel="extra-stylesheet" href="https://damszew.dev/skins/mint.css?h=504215cf6bc10586b487" /><title>damszew - rants-n-rambles</title>
+        <subtitle>Personal blog for sharing thoughts about different practices and patters used to create clean and efficient software</subtitle>
+    <link href="https://damszew.dev/tags/rants-n-rambles/atom.xml" rel="self" type="application/atom+xml"/>
+    <link href="https://damszew.dev/tags/rants-n-rambles/" rel="alternate" type="text/html"/>
+    <generator uri="https://www.getzola.org/">Zola</generator>
+    <updated>2024-09-23T00:00:00+00:00</updated>
+    <id>https://damszew.dev/tags/rants-n-rambles/atom.xml</id><entry xml:lang="en">
+        <title>TDD Is Just a Single Tool - Not a Whole Toolbox</title>
+        <published>2024-09-23T00:00:00+00:00</published>
+        <updated>2024-09-23T00:00:00+00:00</updated>
+        <author>
+            <name>Damian Szewczyk</name>
+        </author>
+        <link rel="alternate" href="https://damszew.dev/blog/tdd-is-a-single-tool-not-a-whole-toolbox/" type="text/html"/>
+        <id>https://damszew.dev/blog/tdd-is-a-single-tool-not-a-whole-toolbox/</id>
+        
+            <content type="html">&lt;p&gt;Today, I’m a much more pragmatic software developer than I used to be.
+When it comes to testing, I’m all about finding the balance:
+having enough tests to feel safe when refactoring or delivering new features,
+but not so many that they slow down development.&lt;&#x2F;p&gt;
+&lt;p&gt;I’ll be honest, though - there was a time when I took the TDD approach way, way too far.
+I was ready to die for Uncle Bob’s “Three Rules of TDD”:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;“Write production code only to pass a failing unit test.”&lt;&#x2F;li&gt;
+&lt;li&gt;“Write no more of a unit test than is sufficient to fail (compilation failures are failures).”&lt;&#x2F;li&gt;
+&lt;li&gt;“Write no more production code than necessary to pass the one failing unit test.”&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;Now, from experience, I can safely say that while those rules sound great in theory,
+they aren’t all that practical in the real world.
+But this blog post isn’t about critiquing TDD - I still enjoy a healthy red-green-refactor cycle.
+Instead, &lt;strong&gt;I want to share MY &lt;em&gt;(practical)&lt;&#x2F;em&gt; approach to TDD, or more broadly, to automated testing.&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;database-in-unit-tests&quot;&gt;&lt;a class=&quot;header-anchor no-hover-padding&quot; href=&quot;#database-in-unit-tests&quot; aria-label=&quot;Anchor link for: database-in-unit-tests&quot;&gt;&lt;span class=&quot;link-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;a&gt;
+Database in Unit Tests&lt;&#x2F;h2&gt;
+&lt;p&gt;First of all, let’s get this out of the way: I use a database in unit tests.
+&lt;a href=&quot;https:&#x2F;&#x2F;dhh.dk&#x2F;2014&#x2F;slow-database-test-fallacy.html&quot;&gt;A pretty old article from DHH&lt;&#x2F;a&gt;
+convinced me to try this out, and I’m glad I did. Locally hosted databases are fast,
+and most database libraries already provide the necessary infrastructure, so this should be a no-brainer.
+For example, Rust’s SQLx provides a macro that:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;Automatically sets up an isolated database for each test,&lt;&#x2F;li&gt;
+&lt;li&gt;Runs migrations,&lt;&#x2F;li&gt;
+&lt;li&gt;Removes databases after successful tests,&lt;&#x2F;li&gt;
+&lt;li&gt;And keeps the failed ones around for debugging.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;It’s so good that I’ve found myself replacing more and more end-to-end tests
+with this kind of setup. These tests are easier to write, maintain, and debug.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;em&gt;Some might argue these are “integration tests,” but since there
+are so many conflicting definitions of that term, I just avoid it altogether.&lt;&#x2F;em&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;The important thing here is that using a database in unit tests is easy&lt;&#x2F;strong&gt; and lets you test things
+that would normally be reserved for end-to-end tests.
+In other words, it replaces expensive, slow-to-run tests with cheaper and faster unit tests.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;say-no-to-worthless-tests&quot;&gt;&lt;a class=&quot;header-anchor no-hover-padding&quot; href=&quot;#say-no-to-worthless-tests&quot; aria-label=&quot;Anchor link for: say-no-to-worthless-tests&quot;&gt;&lt;span class=&quot;link-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;a&gt;
+Say No to Worthless Tests&lt;&#x2F;h2&gt;
+&lt;p&gt;Another thing I “discovered” is how useful a strong type system is.
+Once I learned how to leverage it, I couldn’t stop.
+If I create a function that accepts an &lt;code&gt;Email&lt;&#x2F;code&gt; type,
+&lt;strong&gt;I don’t need to test what happens when &lt;code&gt;null&lt;&#x2F;code&gt; or a random &lt;code&gt;String&lt;&#x2F;code&gt; is passed.&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Not only does this save me from writing tests to cover simple cases,
+but it also pushes me toward the &lt;a href=&quot;https:&#x2F;&#x2F;lexi-lambda.github.io&#x2F;blog&#x2F;2019&#x2F;11&#x2F;05&#x2F;parse-don-t-validate&#x2F;&quot;&gt;“parse, not validate”&lt;&#x2F;a&gt; approach.&lt;&#x2F;p&gt;
+&lt;p&gt;Before my function can even be called, the &lt;code&gt;Email&lt;&#x2F;code&gt; type
+needs to be constructed - or errors need to be handled if it can’t be.
+&lt;strong&gt;This moves error-handling logic higher up the stack
+and keeps the core domain logic focused on business problems.&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Regarding mocks, I only mock external stuff and ideally do so &lt;strong&gt;without&lt;&#x2F;strong&gt; dependency injection.
+When I need to communicate with a third-party API,
+I spin up a mock HTTP server to fake it.
+This covers 99% of my “mocking” needs, because most of the time,
+I try to sidestep the problem entirely.
+By borrowing ideas from functional programming, I push “impure” functions to the edges of the system,
+often creating an &lt;a href=&quot;https:&#x2F;&#x2F;blog.ploeh.dk&#x2F;2020&#x2F;03&#x2F;02&#x2F;impureim-sandwich&#x2F;&quot;&gt;“impureim sandwich”&lt;&#x2F;a&gt;,
+leaving the domain logic pure &lt;em&gt;(free of side effects)&lt;&#x2F;em&gt;.
+This way, I can easily unit test the hell out of it.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;conclusions&quot;&gt;&lt;a class=&quot;header-anchor no-hover-padding&quot; href=&quot;#conclusions&quot; aria-label=&quot;Anchor link for: conclusions&quot;&gt;&lt;span class=&quot;link-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;a&gt;
+Conclusions&lt;&#x2F;h2&gt;
+&lt;p&gt;It’s not easy, but it’s simple.&lt;&#x2F;p&gt;
+&lt;p&gt;A less idealistic approach to automated testing and TDD,
+combined with other tools like a strong type system,
+really opened the door for me to building great software.&lt;&#x2F;p&gt;
+&lt;p&gt;The code is readable, the compiler ensures no dumb bugs slip through,
+and most logic is covered by very quick-to-run unit tests - even though they involve database access.
+&lt;strong&gt;And that’s enough in most cases - covering anything else just isn’t worth the cost.&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;I’ve learned this the hard way.
+I used to believe that with strict &lt;em&gt;(almost radical)&lt;&#x2F;em&gt; TDD,
+I could turn my brain off and let the red-green-refactor process guide me to salvation.
+But in reality, there’s no single tool that can replace good engineering.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;Just like chefs in a kitchen:
+no matter how great your pans are, it’s still better to make soup in a pot.&lt;&#x2F;strong&gt;
+TDD is just a single tool in the toolbox, and great engineering is knowing when to use that tool.&lt;&#x2F;p&gt;
+</content>
+        </entry>
+</feed>

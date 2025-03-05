@@ -1,0 +1,610 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="base" content="https://damszew.dev">
+
+    
+    <title>damszew • TDD == Development Made Right</title>
+
+    
+    
+    
+        <link rel=icon href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 105 55"><text y=".7em" font-size="82">🦁</text></svg>'>
+    
+
+    
+    
+
+    
+    
+    
+        <link rel="stylesheet" href="https://damszew.dev/inter_subset_en.css?h=d8cf4ad058d6c3a4015b">
+    
+
+    
+        <link rel="stylesheet" href="https://damszew.dev/main.css?h=723bd2449e111301496a" />
+        <link rel="stylesheet" href="https://damszew.dev/skins/mint.css?h=504215cf6bc10586b487" />
+
+    <meta name="color-scheme" content="light dark" />
+        <meta name="description" content="Personal blog for sharing thoughts about different practices and patters used to create clean and efficient software" />
+        <meta property="og:description" content="Personal blog for sharing thoughts about different practices and patters used to create clean and efficient software" />
+
+    
+        <meta name="robots" content="index, nofollow" />
+    
+
+    <meta property="og:title" content="TDD == Development Made Right" />
+    <meta property="og:type" content="article" />
+
+    
+
+    <meta property="og:locale" content="en_GB" />
+
+    <meta property="og:url" content="https:&#x2F;&#x2F;damszew.dev&#x2F;blog&#x2F;what-is-a-tdd-in-practice&#x2F;" /><meta property="og:site_name" content="damszew"><meta http-equiv="Content-Security-Policy"
+content="default-src 'self';font-src &#x27;self&#x27; data:;img-src &#x27;self&#x27; https:&#x2F;&#x2F;* data:;media-src &#x27;self&#x27;;style-src &#x27;self&#x27;;frame-src player.vimeo.com https:&#x2F;&#x2F;www.youtube-nocookie.com;connect-src 'self';script-src 'self' 'self'">
+
+        <noscript><link rel="stylesheet" href="https://damszew.dev/no_js.css"/></noscript>
+        <script type="text/javascript" src="https://damszew.dev/js/initializeTheme.min.js"></script>
+        <script defer src="https://damszew.dev/js/themeSwitcher.min.js"></script></head>
+
+
+<body>
+    <header>
+    <nav class="navbar">
+        <div class="nav-title">
+            <a class="home-title" href="https://damszew.dev">damszew</a>
+        </div>
+            <div class="nav-navs">
+                <ul>
+                        
+                            <li>
+                                
+                                <a class="nav-links no-hover-padding" href="https://damszew.dev/blog/">
+                                blog
+                                </a>
+                            </li>
+                        
+                            <li>
+                                
+                                <a class="nav-links no-hover-padding" href="https://damszew.dev/tags/">
+                                tags
+                                </a>
+                            </li>
+                        
+                            <li>
+                                
+                                <a class="nav-links no-hover-padding" href="https://damszew.dev/about/">
+                                about
+                                </a>
+                            </li>
+                        
+
+                    
+                    
+
+                    <li class="theme-switcher-wrapper js"><div
+        title="Toggle dark&#x2F;light mode"
+        class="theme-switcher"
+        tabindex="0"
+        role="button"
+        aria-label="Toggle dark mode"
+        aria-pressed="false">
+    </div><div
+        title="Reset mode to default"
+        class="theme-resetter arrow"
+        tabindex="0"
+        role="button"
+        aria-hidden="true"
+        aria-label="Reset mode to default">
+    </div>
+
+</li>
+</ul>
+            </div>
+        
+    </nav>
+</header>
+
+    <div class="content">
+
+        
+        
+
+
+
+
+<main>
+    <article>
+        <h1 class="article-title">
+            TDD == Development Made Right
+        </h1>
+
+        <ul class="meta"><li>8th Sep 2021</li>&nbsp;•&nbsp;<li title="1441 words">8 min read</li>&nbsp;•&nbsp;<li>Tags:&nbsp;</li><li><a href="https://damszew.dev/tags/tdd/">tdd</a></li>
+        </ul>
+
+        
+
+        
+        
+            
+
+<div class="toc-container">
+    
+        <h3>Table of Contents</h3>
+    
+
+    <ul>
+        
+            
+            
+                <li><a href="https://damszew.dev/blog/what-is-a-tdd-in-practice/#what-is-tdd">What is TDD?</a>
+                    
+                        <ul>
+                            
+                                
+                                    <li><a href="https://damszew.dev/blog/what-is-a-tdd-in-practice/#red">Red</a>
+                                        
+                                    </li>
+                                
+                            
+                                
+                                    <li><a href="https://damszew.dev/blog/what-is-a-tdd-in-practice/#green">Green</a>
+                                        
+                                    </li>
+                                
+                            
+                                
+                                    <li><a href="https://damszew.dev/blog/what-is-a-tdd-in-practice/#refactor">Refactor</a>
+                                        
+                                    </li>
+                                
+                            
+                        </ul>
+                    
+                </li>
+            
+        
+            
+            
+                <li><a href="https://damszew.dev/blog/what-is-a-tdd-in-practice/#what-are-the-benefits-of-tdd">What are the benefits of TDD?</a>
+                    
+                        <ul>
+                            
+                                
+                                    <li><a href="https://damszew.dev/blog/what-is-a-tdd-in-practice/#confidence">Confidence</a>
+                                        
+                                    </li>
+                                
+                            
+                                
+                                    <li><a href="https://damszew.dev/blog/what-is-a-tdd-in-practice/#better-code">Better code</a>
+                                        
+                                    </li>
+                                
+                            
+                                
+                                    <li><a href="https://damszew.dev/blog/what-is-a-tdd-in-practice/#more-productive">More productive</a>
+                                        
+                                    </li>
+                                
+                            
+                        </ul>
+                    
+                </li>
+            
+        
+            
+            
+                <li><a href="https://damszew.dev/blog/what-is-a-tdd-in-practice/#common-pitfalls-of-tdd">Common pitfalls of TDD</a>
+                    
+                        <ul>
+                            
+                                
+                                    <li><a href="https://damszew.dev/blog/what-is-a-tdd-in-practice/#fragile-tests">Fragile tests</a>
+                                        
+                                    </li>
+                                
+                            
+                                
+                                    <li><a href="https://damszew.dev/blog/what-is-a-tdd-in-practice/#false-sense-of-security">False sense of security</a>
+                                        
+                                    </li>
+                                
+                            
+                        </ul>
+                    
+                </li>
+            
+        
+            
+            
+                <li><a href="https://damszew.dev/blog/what-is-a-tdd-in-practice/#summary">Summary</a>
+                    
+                </li>
+            
+        
+    </ul>
+</div>
+
+
+        
+
+        <section class="body">
+            
+            
+            <p><strong>TDD</strong> <em>(Test-Driven Development)</em> has forever changed the way I write code.
+In this post, I’ll show you how TDD helps you create better software and make it faster.
+While also warn you about common and easy to make mistakes developers make.</p>
+<p>Before, I got used to over-engineering even the simplest of solutions
+and spend too much time on “perfecting the code”. So long that I often forgot about
+the functionality I was supposed to deliver.</p>
+<p>Currently, I’m almost like a TDD purist and here I’ll try to prove my point that
+<em>(almost)</em> no code should be written without first writing a failing test.</p>
+<h2 id="what-is-tdd"><a class="header-anchor no-hover-padding" href="#what-is-tdd" aria-label="Anchor link for: what-is-tdd"><span class="link-icon" aria-hidden="true"></span></a>
+What is TDD?</h2>
+<p><strong>TDD</strong> <em>(Test-Driven Development)</em> is a software development process where the solution is developed in very short development cycles of three steps:</p>
+<ul>
+<li>red - <em>introducing new and unique failing test that defines our requirement</em></li>
+<li>green - <em>writing minimal amount of logic that we need for tests to pass (Here we shouldn’t care too much about code elegance)</em></li>
+<li>refactor - <em>we can now combine all knowledge we gathered from previous cycles to improve our code to be more reusable and also more readable</em></li>
+</ul>
+<p>By keeping our development cycle short, we allow ourselves to work on smaller more maintainable pieces at a time. This way, we can incrementally
+work our way up even when we have to satisfy complicated requirements.</p>
+<h3 id="red"><a class="header-anchor no-hover-padding" href="#red" aria-label="Anchor link for: red"><span class="link-icon" aria-hidden="true"></span></a>
+Red</h3>
+<p>Starting each cycle with a failing test is very important. This step will tell us if there is more functionality needed to be coded.
+<strong>If I can’t come up with a scenario for a falling test, it means my work on this piece of code is done.</strong>
+I can still work on optimizing code but no new logic is needed (and therefore shouldn’t be added aka. <a href="https://en.wikipedia.org/wiki/You_aren%27t_gonna_need_it">YAGNI</a>).</p>
+<h3 id="green"><a class="header-anchor no-hover-padding" href="#green" aria-label="Anchor link for: green"><span class="link-icon" aria-hidden="true"></span></a>
+Green</h3>
+<p>In this step, we should <strong>write just enough code to pass all tests</strong>. Feel free to add <code>if</code>s and return hard-coded values. This code will be there
+only for a couple of minutes (a couple of cycles). In my opinion, this approach is crucial, as it allows us to unfold a solution bit by bit, so it’s easier
+to spot patterns or similarities.</p>
+<h3 id="refactor"><a class="header-anchor no-hover-padding" href="#refactor" aria-label="Anchor link for: refactor"><span class="link-icon" aria-hidden="true"></span></a>
+Refactor</h3>
+<p>It’s all about the readability and maintainability of both production code and test cases. We will be mostly looking for removing duplicated code,
+extracting pieces of logic to functions and methods so they are named (and therefore self-documenting), or in general looking for any “code smells”.
+<strong>Remember, in this step we are not adding any new functionality -&gt; just moving code around so it is cleaner.</strong></p>
+<h2 id="what-are-the-benefits-of-tdd"><a class="header-anchor no-hover-padding" href="#what-are-the-benefits-of-tdd" aria-label="Anchor link for: what-are-the-benefits-of-tdd"><span class="link-icon" aria-hidden="true"></span></a>
+What are the benefits of TDD?</h2>
+<p>Test-driven development is the most reliable methodology to develop high-quality software.
+What I’ve found is that TDD also helps in other (maybe not so technical) aspects
+of my software development job.</p>
+<p>TDD gives me confidence that my latest change won’t break production
+or helps me stay on track with what I need to do.
+Here are my observations on what happens when you stick with TDD.</p>
+<h3 id="confidence"><a class="header-anchor no-hover-padding" href="#confidence" aria-label="Anchor link for: confidence"><span class="link-icon" aria-hidden="true"></span></a>
+Confidence</h3>
+<p><strong>TDD lets you modify code without fear of breaking stuff - tests will light in red as soon as something stops working.</strong></p>
+<p>TDD even helps to improve teamwork - all team members can easily pick up and work on the code of the others.
+Especially in large codebases, where a single developer can’t predict all outcomes of changes he introduces.</p>
+<blockquote>
+<p>There are no bugs only not written tests</p>
+</blockquote>
+<p><strong>It even helps boost the confidence of your non-programmer team members -&gt; When all tests pass, it is less likely that deploy or new release will fail.</strong></p>
+<p>Test-Driven Development combined with Continuous Delivery (CD) creates an awesome platform for checking your ideas
+and ensuring that your software is always in a releasable state.</p>
+<h3 id="better-code"><a class="header-anchor no-hover-padding" href="#better-code" aria-label="Anchor link for: better-code"><span class="link-icon" aria-hidden="true"></span></a>
+Better code</h3>
+<p><strong>Code developed using the TDD approach will naturally be more maintainable.</strong></p>
+<p>By writing a failing test, we’ll start with
+“how we would like this piece of code to look like in perfect scenario”.
+It helps to better design a code. Writing the test first requires you to think about what you need. It forces you to solve the problem by going from specific to abstract.</p>
+<blockquote>
+<p>Tests that are hard to write typically signal a deficiency in design!</p>
+</blockquote>
+<p>Easy to write tests, set us up for creating code that is decoupled (to allow testing code in isolation)
+and modular (so tests are short and easy to write).</p>
+<p><strong>Tests can be also treated as documentation!</strong> Especially high-level acceptance tests that are written in BDD (Behavior-Driven Development) style <em>(but more on that in later posts)</em>.
+But even unit tests can be great documentation - <strong>Documenting by showing what problem we needed to solve.</strong></p>
+<p>Additionally, constant small refactorings will improve readability.</p>
+<h3 id="more-productive"><a class="header-anchor no-hover-padding" href="#more-productive" aria-label="Anchor link for: more-productive"><span class="link-icon" aria-hidden="true"></span></a>
+More productive</h3>
+<p><strong>TDD makes you work on what is really important - meeting your requirements.</strong></p>
+<p>Tests are an executable manifestation of requirements. With Test-Driven Development, code is proven to meet requirements.</p>
+<p>If all tests pass - our work is done. A new logic is written only when we have a failing test - and they are created based on requirements.</p>
+<blockquote>
+<p>We shouldn’t be working on stuff we don’t have a test for.</p>
+</blockquote>
+<p>Additionally, TDD means <strong>spending less time in a debugger.</strong>
+Tests are there to tell you what broke. Test-driven, not debugger-driven development
+What’s more, fewer bugs means more time to work on new features.</p>
+<p>Constant regression testing protects us from breaking old stuff.
+A short feedback loop instantly notifies you when you’ve introduced a bug or your design is falling short.
+TDD guides you to a better solution. It will save you from a moment where you have a bug that requires a massive rewrite.</p>
+<h2 id="common-pitfalls-of-tdd"><a class="header-anchor no-hover-padding" href="#common-pitfalls-of-tdd" aria-label="Anchor link for: common-pitfalls-of-tdd"><span class="link-icon" aria-hidden="true"></span></a>
+Common pitfalls of TDD</h2>
+<p>TDD helps and guides you to better code design but it’s not mindless.
+There are still mistakes that can be made on the way.
+Here are two of the most serious pitfalls and a short explanation of how to avoid them.</p>
+<h3 id="fragile-tests"><a class="header-anchor no-hover-padding" href="#fragile-tests" aria-label="Anchor link for: fragile-tests"><span class="link-icon" aria-hidden="true"></span></a>
+Fragile tests</h3>
+<p><strong>Fragile tests are a burden</strong> - they add high maintenance costs and can damage our confidence in tests.
+<em>How can I trust my test suite, if each change requires me to modify it?</em></p>
+<p>Here are a couple of mistakes that can lead to fragile tests and how to avoid them:</p>
+<ul>
+<li>
+<p><strong>Tests highly coupled with implementation</strong> - Probably tests were written after implementation. <em>We are testing what we wrote, not behavior that is needed.</em> First write a failing test and focus on behavior.</p>
+</li>
+<li>
+<p><strong>Tests depend on each other or on different parts of codebase</strong> - Use mocks to isolate test cases from each other and from persistent state storage.</p>
+</li>
+<li>
+<p><strong>Too much setup in test case</strong>. - Most often it also indicates deficiencies in design and a need for an additional level of abstraction.</p>
+</li>
+<li>
+<p><strong>Too much asserting</strong> - Probably too much is going on in this test. Add another level of abstraction and mock it or break your big test cases into multiple smaller ones.</p>
+</li>
+<li>
+<p><strong>Too many expectations on mocks</strong> - Write flexible mocks. Prefer using sane default behavior of mocks and set expectations only when needed.</p>
+</li>
+</ul>
+<h3 id="false-sense-of-security"><a class="header-anchor no-hover-padding" href="#false-sense-of-security" aria-label="Anchor link for: false-sense-of-security"><span class="link-icon" aria-hidden="true"></span></a>
+False sense of security</h3>
+<p>Multiple reasons may lead to a false sense of security.
+Fortunately, most of them can be prevented with high-level automated acceptance tests
+and/or a QA team.</p>
+<p>Here are a couple of things that may increase our feeling of security without increasing
+the overall quality of software:</p>
+<ul>
+<li>
+<p><strong>Focusing solely on unit tests</strong> - Unit tests focus on small pieces of software at a time.
+You still need other levels of the testing pyramid <em>(acceptance or integration tests)</em> to ensure
+that these pieces work together as expected.</p>
+</li>
+<li>
+<p><strong>Chasing test coverage</strong> - This may lead to meaningless test cases written only to
+increase coverage. What’s worse, meaningless tests can sometimes replace meaningful ones
+because “we’ve already reached our coverage goal”.</p>
+</li>
+<li>
+<p><strong>Requirements misinterpretation or blind spots</strong> - <em>A bug is not an error in logic; it is a test that was not written.</em> Acceptance tests are a must! And when all testing is automated, your QA team can work more proactively.</p>
+</li>
+</ul>
+<h2 id="summary"><a class="header-anchor no-hover-padding" href="#summary" aria-label="Anchor link for: summary"><span class="link-icon" aria-hidden="true"></span></a>
+Summary</h2>
+<p><strong>In TDD, tests are a tool to help us develop better code faster.</strong>
+When you start treating tests as a tool you won’t ever think about them as an added maintenance code.
+They are there to help you do your job better and faster.</p>
+<p><strong>In my opinion the more tests the better.</strong></p>
+<blockquote>
+<p>A carpenter won’t ever complain that he has too many tools!</p>
+</blockquote>
+<p>But also remember, if any of your tools doesn’t help you anymore -
+don’t be afraid to throw it away or replace it with a new one (refactor also tests).</p>
+<p>What do you think about TDD? Is this methodology returning to favor, or has it been abandoned long ago?  Comment down below!</p>
+
+        </section>
+
+        
+        
+        
+        
+
+        
+            
+            
+            
+
+            
+        
+            
+            
+            
+
+            
+        
+            
+            
+            
+
+            
+        
+            
+            
+            
+
+            
+        
+
+        
+        
+
+        
+        
+
+    </article>
+</main>
+
+    <div id="button-container">
+        
+        
+            <div id="toc-floating-container">
+                <input type="checkbox" id="toc-toggle" class="toggle"/>
+                <label for="toc-toggle" class="overlay"></label>
+                <label for="toc-toggle" id="toc-button" class="button" title="Toggle Table of Contents">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="M414.82-193.094q-18.044 0-30.497-12.32-12.453-12.319-12.453-30.036t12.453-30.086q12.453-12.37 30.497-12.37h392.767q17.237 0 29.927 12.487 12.69 12.486 12.69 30.203 0 17.716-12.69 29.919t-29.927 12.203H414.82Zm0-244.833q-18.044 0-30.497-12.487Q371.87-462.9 371.87-480.45t12.453-29.92q12.453-12.369 30.497-12.369h392.767q17.237 0 29.927 12.511 12.69 12.512 12.69 29.845 0 17.716-12.69 30.086-12.69 12.37-29.927 12.37H414.82Zm0-245.167q-18.044 0-30.497-12.32t-12.453-30.037q0-17.716 12.453-30.086 12.453-12.369 30.497-12.369h392.767q17.237 0 29.927 12.486 12.69 12.487 12.69 30.203 0 17.717-12.69 29.92-12.69 12.203-29.927 12.203H414.82ZM189.379-156.681q-32.652 0-55.878-22.829t-23.226-55.731q0-32.549 23.15-55.647 23.151-23.097 55.95-23.097 32.799 0 55.313 23.484 22.515 23.484 22.515 56.246 0 32.212-22.861 54.893-22.861 22.681-54.963 22.681Zm0-245.167q-32.652 0-55.878-23.134-23.226-23.135-23.226-55.623 0-32.487 23.467-55.517t56.12-23.03q32.102 0 54.721 23.288 22.62 23.288 22.62 55.775 0 32.488-22.861 55.364-22.861 22.877-54.963 22.877Zm-.82-244.833q-32.224 0-55.254-23.288-23.03-23.289-23.03-55.623 0-32.333 23.271-55.364 23.272-23.03 55.495-23.03 32.224 0 55.193 23.288 22.969 23.289 22.969 55.622 0 32.334-23.21 55.364-23.21 23.031-55.434 23.031Z"/></svg>
+                </label>
+                <div class="toc-content">
+                    
+
+<div class="toc-container">
+    
+
+    <ul>
+        
+            
+            
+                <li><a href="https://damszew.dev/blog/what-is-a-tdd-in-practice/#what-is-tdd">What is TDD?</a>
+                    
+                        <ul>
+                            
+                                
+                                    <li><a href="https://damszew.dev/blog/what-is-a-tdd-in-practice/#red">Red</a>
+                                        
+                                    </li>
+                                
+                            
+                                
+                                    <li><a href="https://damszew.dev/blog/what-is-a-tdd-in-practice/#green">Green</a>
+                                        
+                                    </li>
+                                
+                            
+                                
+                                    <li><a href="https://damszew.dev/blog/what-is-a-tdd-in-practice/#refactor">Refactor</a>
+                                        
+                                    </li>
+                                
+                            
+                        </ul>
+                    
+                </li>
+            
+        
+            
+            
+                <li><a href="https://damszew.dev/blog/what-is-a-tdd-in-practice/#what-are-the-benefits-of-tdd">What are the benefits of TDD?</a>
+                    
+                        <ul>
+                            
+                                
+                                    <li><a href="https://damszew.dev/blog/what-is-a-tdd-in-practice/#confidence">Confidence</a>
+                                        
+                                    </li>
+                                
+                            
+                                
+                                    <li><a href="https://damszew.dev/blog/what-is-a-tdd-in-practice/#better-code">Better code</a>
+                                        
+                                    </li>
+                                
+                            
+                                
+                                    <li><a href="https://damszew.dev/blog/what-is-a-tdd-in-practice/#more-productive">More productive</a>
+                                        
+                                    </li>
+                                
+                            
+                        </ul>
+                    
+                </li>
+            
+        
+            
+            
+                <li><a href="https://damszew.dev/blog/what-is-a-tdd-in-practice/#common-pitfalls-of-tdd">Common pitfalls of TDD</a>
+                    
+                        <ul>
+                            
+                                
+                                    <li><a href="https://damszew.dev/blog/what-is-a-tdd-in-practice/#fragile-tests">Fragile tests</a>
+                                        
+                                    </li>
+                                
+                            
+                                
+                                    <li><a href="https://damszew.dev/blog/what-is-a-tdd-in-practice/#false-sense-of-security">False sense of security</a>
+                                        
+                                    </li>
+                                
+                            
+                        </ul>
+                    
+                </li>
+            
+        
+            
+            
+                <li><a href="https://damszew.dev/blog/what-is-a-tdd-in-practice/#summary">Summary</a>
+                    
+                </li>
+            
+        
+    </ul>
+</div>
+
+
+                </div>
+            </div>
+        
+
+        
+        
+
+        
+        <a href="#" id="top-button" class="no-hover-padding" title="Go to the top of the page">
+            <svg viewBox="0 0 20 20" fill="currentColor"><path d="M3.293 9.707a1 1 0 010-1.414l6-6a1 1 0 011.414 0l6 6a1 1 0 01-1.414 1.414L11 5.414V17a1 1 0 11-2 0V5.414L4.707 9.707a1 1 0 01-1.414 0z"/></svg>
+        </a>
+    </div>
+
+
+<span id="copy-success" class="hidden">
+        Copied!
+    </span>
+    <span id="copy-init" class="hidden">
+        Copy code to clipboard
+    </span>
+    <script defer src="https://damszew.dev/js/copyCodeToClipboard.min.js"></script>
+    </div>
+    <footer>
+    <section>
+        <nav class="socials nav-navs">
+                <ul>
+                    
+                    
+                    
+                    
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding social" rel=" me"  href="https://github.com/damszew">
+                                    <img loading="lazy" alt="github" title="github" src="https://damszew.dev/social_icons/github.svg">
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding social" rel=" me"  href="https://www.linkedin.com/in/szewczyk-damian/">
+                                    <img loading="lazy" alt="linkedin" title="linkedin" src="https://damszew.dev/social_icons/linkedin.svg">
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding social" rel=" me"  href="https://twitter.com/damszew/">
+                                    <img loading="lazy" alt="twitter" title="twitter" src="https://damszew.dev/social_icons/twitter.svg">
+                                </a>
+                            </li>
+                        
+                    
+                </ul>
+            
+        </nav>
+
+        
+        <nav class="nav-navs">
+        </nav>
+
+        <div class="credits">
+            <small>
+                
+
+                
+                Powered by
+                <a rel=""  href="https://www.getzola.org">Zola</a>
+                &amp;
+                <a rel=""  href="https://github.com/welpo/tabi">tabi</a>
+
+                </small>
+        </div>
+    </section>
+
+    </footer>
+
+</body>
+
+</html>

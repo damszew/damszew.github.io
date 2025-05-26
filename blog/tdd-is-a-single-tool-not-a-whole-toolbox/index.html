@@ -1,0 +1,407 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="base" content="https://damszew.dev">
+
+    
+    <title>damszew • TDD Is Just a Single Tool - Not a Whole Toolbox</title>
+
+    
+    
+    
+        <link rel=icon href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 105 55"><text y=".7em" font-size="82">🦁</text></svg>'>
+    
+
+    
+    
+
+    
+    
+    
+        <link rel="stylesheet" href="https://damszew.dev/inter_subset_en.css?h=d8cf4ad058d6c3a4015b">
+    
+
+    
+        <link rel="stylesheet" href="https://damszew.dev/main.css?h=723bd2449e111301496a" />
+        <link rel="stylesheet" href="https://damszew.dev/skins/mint.css?h=504215cf6bc10586b487" />
+
+    <meta name="color-scheme" content="light dark" />
+        <meta name="description" content="Personal blog for sharing thoughts about different practices and patters used to create clean and efficient software" />
+        <meta property="og:description" content="Personal blog for sharing thoughts about different practices and patters used to create clean and efficient software" />
+
+    
+        <meta name="robots" content="index, nofollow" />
+    
+
+    <meta property="og:title" content="TDD Is Just a Single Tool - Not a Whole Toolbox" />
+    <meta property="og:type" content="article" />
+
+    
+
+    <meta property="og:locale" content="en_GB" />
+
+    <meta property="og:url" content="https:&#x2F;&#x2F;damszew.dev&#x2F;blog&#x2F;tdd-is-a-single-tool-not-a-whole-toolbox&#x2F;" /><meta property="og:site_name" content="damszew"><meta http-equiv="Content-Security-Policy"
+content="default-src 'self';font-src &#x27;self&#x27; data:;img-src &#x27;self&#x27; https:&#x2F;&#x2F;* data:;media-src &#x27;self&#x27;;style-src &#x27;self&#x27;;frame-src player.vimeo.com https:&#x2F;&#x2F;www.youtube-nocookie.com;connect-src 'self';script-src 'self' 'self'">
+
+        <noscript><link rel="stylesheet" href="https://damszew.dev/no_js.css"/></noscript>
+        <script type="text/javascript" src="https://damszew.dev/js/initializeTheme.min.js"></script>
+        <script defer src="https://damszew.dev/js/themeSwitcher.min.js"></script></head>
+
+
+<body>
+    <header>
+    <nav class="navbar">
+        <div class="nav-title">
+            <a class="home-title" href="https://damszew.dev">damszew</a>
+        </div>
+            <div class="nav-navs">
+                <ul>
+                        
+                            <li>
+                                
+                                <a class="nav-links no-hover-padding" href="https://damszew.dev/blog/">
+                                blog
+                                </a>
+                            </li>
+                        
+                            <li>
+                                
+                                <a class="nav-links no-hover-padding" href="https://damszew.dev/tags/">
+                                tags
+                                </a>
+                            </li>
+                        
+                            <li>
+                                
+                                <a class="nav-links no-hover-padding" href="https://damszew.dev/about/">
+                                about
+                                </a>
+                            </li>
+                        
+
+                    
+                    
+
+                    <li class="theme-switcher-wrapper js"><div
+        title="Toggle dark&#x2F;light mode"
+        class="theme-switcher"
+        tabindex="0"
+        role="button"
+        aria-label="Toggle dark mode"
+        aria-pressed="false">
+    </div><div
+        title="Reset mode to default"
+        class="theme-resetter arrow"
+        tabindex="0"
+        role="button"
+        aria-hidden="true"
+        aria-label="Reset mode to default">
+    </div>
+
+</li>
+</ul>
+            </div>
+        
+    </nav>
+</header>
+
+    <div class="content">
+
+        
+        
+
+
+
+
+<main>
+    <article>
+        <h1 class="article-title">
+            TDD Is Just a Single Tool - Not a Whole Toolbox
+        </h1>
+
+        <ul class="meta"><li>23rd Sep 2024</li>&nbsp;•&nbsp;<li title="764 words">4 min read</li>&nbsp;•&nbsp;<li>Tags:&nbsp;</li><li><a href="https://damszew.dev/tags/rants-n-rambles/">rants-n-rambles</a></li>
+        </ul>
+
+        
+
+        
+        
+            
+
+<div class="toc-container">
+    
+        <h3>Table of Contents</h3>
+    
+
+    <ul>
+        
+            
+            
+                <li><a href="https://damszew.dev/blog/tdd-is-a-single-tool-not-a-whole-toolbox/#database-in-unit-tests">Database in Unit Tests</a>
+                    
+                </li>
+            
+        
+            
+            
+                <li><a href="https://damszew.dev/blog/tdd-is-a-single-tool-not-a-whole-toolbox/#say-no-to-worthless-tests">Say No to Worthless Tests</a>
+                    
+                </li>
+            
+        
+            
+            
+                <li><a href="https://damszew.dev/blog/tdd-is-a-single-tool-not-a-whole-toolbox/#conclusions">Conclusions</a>
+                    
+                </li>
+            
+        
+    </ul>
+</div>
+
+
+        
+
+        <section class="body">
+            
+            
+            <p>Today, I’m a much more pragmatic software developer than I used to be.
+When it comes to testing, I’m all about finding the balance:
+having enough tests to feel safe when refactoring or delivering new features,
+but not so many that they slow down development.</p>
+<p>I’ll be honest, though - there was a time when I took the TDD approach way, way too far.
+I was ready to die for Uncle Bob’s “Three Rules of TDD”:</p>
+<ul>
+<li>“Write production code only to pass a failing unit test.”</li>
+<li>“Write no more of a unit test than is sufficient to fail (compilation failures are failures).”</li>
+<li>“Write no more production code than necessary to pass the one failing unit test.”</li>
+</ul>
+<p>Now, from experience, I can safely say that while those rules sound great in theory,
+they aren’t all that practical in the real world.
+But this blog post isn’t about critiquing TDD - I still enjoy a healthy red-green-refactor cycle.
+Instead, <strong>I want to share MY <em>(practical)</em> approach to TDD, or more broadly, to automated testing.</strong></p>
+<h2 id="database-in-unit-tests"><a class="header-anchor no-hover-padding" href="#database-in-unit-tests" aria-label="Anchor link for: database-in-unit-tests"><span class="link-icon" aria-hidden="true"></span></a>
+Database in Unit Tests</h2>
+<p>First of all, let’s get this out of the way: I use a database in unit tests.
+<a href="https://dhh.dk/2014/slow-database-test-fallacy.html">A pretty old article from DHH</a>
+convinced me to try this out, and I’m glad I did. Locally hosted databases are fast,
+and most database libraries already provide the necessary infrastructure, so this should be a no-brainer.
+For example, Rust’s SQLx provides a macro that:</p>
+<ul>
+<li>Automatically sets up an isolated database for each test,</li>
+<li>Runs migrations,</li>
+<li>Removes databases after successful tests,</li>
+<li>And keeps the failed ones around for debugging.</li>
+</ul>
+<p>It’s so good that I’ve found myself replacing more and more end-to-end tests
+with this kind of setup. These tests are easier to write, maintain, and debug.</p>
+<p><em>Some might argue these are “integration tests,” but since there
+are so many conflicting definitions of that term, I just avoid it altogether.</em></p>
+<p><strong>The important thing here is that using a database in unit tests is easy</strong> and lets you test things
+that would normally be reserved for end-to-end tests.
+In other words, it replaces expensive, slow-to-run tests with cheaper and faster unit tests.</p>
+<h2 id="say-no-to-worthless-tests"><a class="header-anchor no-hover-padding" href="#say-no-to-worthless-tests" aria-label="Anchor link for: say-no-to-worthless-tests"><span class="link-icon" aria-hidden="true"></span></a>
+Say No to Worthless Tests</h2>
+<p>Another thing I “discovered” is how useful a strong type system is.
+Once I learned how to leverage it, I couldn’t stop.
+If I create a function that accepts an <code>Email</code> type,
+<strong>I don’t need to test what happens when <code>null</code> or a random <code>String</code> is passed.</strong></p>
+<p>Not only does this save me from writing tests to cover simple cases,
+but it also pushes me toward the <a href="https://lexi-lambda.github.io/blog/2019/11/05/parse-don-t-validate/">“parse, not validate”</a> approach.</p>
+<p>Before my function can even be called, the <code>Email</code> type
+needs to be constructed - or errors need to be handled if it can’t be.
+<strong>This moves error-handling logic higher up the stack
+and keeps the core domain logic focused on business problems.</strong></p>
+<p>Regarding mocks, I only mock external stuff and ideally do so <strong>without</strong> dependency injection.
+When I need to communicate with a third-party API,
+I spin up a mock HTTP server to fake it.
+This covers 99% of my “mocking” needs, because most of the time,
+I try to sidestep the problem entirely.
+By borrowing ideas from functional programming, I push “impure” functions to the edges of the system,
+often creating an <a href="https://blog.ploeh.dk/2020/03/02/impureim-sandwich/">“impureim sandwich”</a>,
+leaving the domain logic pure <em>(free of side effects)</em>.
+This way, I can easily unit test the hell out of it.</p>
+<h2 id="conclusions"><a class="header-anchor no-hover-padding" href="#conclusions" aria-label="Anchor link for: conclusions"><span class="link-icon" aria-hidden="true"></span></a>
+Conclusions</h2>
+<p>It’s not easy, but it’s simple.</p>
+<p>A less idealistic approach to automated testing and TDD,
+combined with other tools like a strong type system,
+really opened the door for me to building great software.</p>
+<p>The code is readable, the compiler ensures no dumb bugs slip through,
+and most logic is covered by very quick-to-run unit tests - even though they involve database access.
+<strong>And that’s enough in most cases - covering anything else just isn’t worth the cost.</strong></p>
+<p>I’ve learned this the hard way.
+I used to believe that with strict <em>(almost radical)</em> TDD,
+I could turn my brain off and let the red-green-refactor process guide me to salvation.
+But in reality, there’s no single tool that can replace good engineering.</p>
+<p><strong>Just like chefs in a kitchen:
+no matter how great your pans are, it’s still better to make soup in a pot.</strong>
+TDD is just a single tool in the toolbox, and great engineering is knowing when to use that tool.</p>
+
+        </section>
+
+        
+        
+        
+        
+
+        
+            
+            
+            
+
+            
+        
+            
+            
+            
+
+            
+        
+            
+            
+            
+
+            
+        
+            
+            
+            
+
+            
+        
+
+        
+        
+
+        
+        
+
+    </article>
+</main>
+
+    <div id="button-container">
+        
+        
+            <div id="toc-floating-container">
+                <input type="checkbox" id="toc-toggle" class="toggle"/>
+                <label for="toc-toggle" class="overlay"></label>
+                <label for="toc-toggle" id="toc-button" class="button" title="Toggle Table of Contents">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="M414.82-193.094q-18.044 0-30.497-12.32-12.453-12.319-12.453-30.036t12.453-30.086q12.453-12.37 30.497-12.37h392.767q17.237 0 29.927 12.487 12.69 12.486 12.69 30.203 0 17.716-12.69 29.919t-29.927 12.203H414.82Zm0-244.833q-18.044 0-30.497-12.487Q371.87-462.9 371.87-480.45t12.453-29.92q12.453-12.369 30.497-12.369h392.767q17.237 0 29.927 12.511 12.69 12.512 12.69 29.845 0 17.716-12.69 30.086-12.69 12.37-29.927 12.37H414.82Zm0-245.167q-18.044 0-30.497-12.32t-12.453-30.037q0-17.716 12.453-30.086 12.453-12.369 30.497-12.369h392.767q17.237 0 29.927 12.486 12.69 12.487 12.69 30.203 0 17.717-12.69 29.92-12.69 12.203-29.927 12.203H414.82ZM189.379-156.681q-32.652 0-55.878-22.829t-23.226-55.731q0-32.549 23.15-55.647 23.151-23.097 55.95-23.097 32.799 0 55.313 23.484 22.515 23.484 22.515 56.246 0 32.212-22.861 54.893-22.861 22.681-54.963 22.681Zm0-245.167q-32.652 0-55.878-23.134-23.226-23.135-23.226-55.623 0-32.487 23.467-55.517t56.12-23.03q32.102 0 54.721 23.288 22.62 23.288 22.62 55.775 0 32.488-22.861 55.364-22.861 22.877-54.963 22.877Zm-.82-244.833q-32.224 0-55.254-23.288-23.03-23.289-23.03-55.623 0-32.333 23.271-55.364 23.272-23.03 55.495-23.03 32.224 0 55.193 23.288 22.969 23.289 22.969 55.622 0 32.334-23.21 55.364-23.21 23.031-55.434 23.031Z"/></svg>
+                </label>
+                <div class="toc-content">
+                    
+
+<div class="toc-container">
+    
+
+    <ul>
+        
+            
+            
+                <li><a href="https://damszew.dev/blog/tdd-is-a-single-tool-not-a-whole-toolbox/#database-in-unit-tests">Database in Unit Tests</a>
+                    
+                </li>
+            
+        
+            
+            
+                <li><a href="https://damszew.dev/blog/tdd-is-a-single-tool-not-a-whole-toolbox/#say-no-to-worthless-tests">Say No to Worthless Tests</a>
+                    
+                </li>
+            
+        
+            
+            
+                <li><a href="https://damszew.dev/blog/tdd-is-a-single-tool-not-a-whole-toolbox/#conclusions">Conclusions</a>
+                    
+                </li>
+            
+        
+    </ul>
+</div>
+
+
+                </div>
+            </div>
+        
+
+        
+        
+
+        
+        <a href="#" id="top-button" class="no-hover-padding" title="Go to the top of the page">
+            <svg viewBox="0 0 20 20" fill="currentColor"><path d="M3.293 9.707a1 1 0 010-1.414l6-6a1 1 0 011.414 0l6 6a1 1 0 01-1.414 1.414L11 5.414V17a1 1 0 11-2 0V5.414L4.707 9.707a1 1 0 01-1.414 0z"/></svg>
+        </a>
+    </div>
+
+
+<span id="copy-success" class="hidden">
+        Copied!
+    </span>
+    <span id="copy-init" class="hidden">
+        Copy code to clipboard
+    </span>
+    <script defer src="https://damszew.dev/js/copyCodeToClipboard.min.js"></script>
+    </div>
+    <footer>
+    <section>
+        <nav class="socials nav-navs">
+                <ul>
+                    
+                    
+                    
+                    
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding social" rel=" me"  href="https://github.com/damszew">
+                                    <img loading="lazy" alt="github" title="github" src="https://damszew.dev/social_icons/github.svg">
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding social" rel=" me"  href="https://www.linkedin.com/in/szewczyk-damian/">
+                                    <img loading="lazy" alt="linkedin" title="linkedin" src="https://damszew.dev/social_icons/linkedin.svg">
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a class="nav-links no-hover-padding social" rel=" me"  href="https://twitter.com/damszew/">
+                                    <img loading="lazy" alt="twitter" title="twitter" src="https://damszew.dev/social_icons/twitter.svg">
+                                </a>
+                            </li>
+                        
+                    
+                </ul>
+            
+        </nav>
+
+        
+        <nav class="nav-navs">
+        </nav>
+
+        <div class="credits">
+            <small>
+                
+
+                
+                Powered by
+                <a rel=""  href="https://www.getzola.org">Zola</a>
+                &amp;
+                <a rel=""  href="https://github.com/welpo/tabi">tabi</a>
+
+                </small>
+        </div>
+    </section>
+
+    </footer>
+
+</body>
+
+</html>

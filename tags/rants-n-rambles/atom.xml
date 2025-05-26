@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="https://damszew.dev/feed_style.xsl" type="text/xsl"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+    <tabi:metadata xmlns:tabi="https://github.com/welpo/tabi">
+        <tabi:separator>
+            •
+        </tabi:separator>
+        <tabi:about_feeds>This is a web feed, also known as an Atom feed. Subscribe by copying the URL from the address bar into your newsreader. Visit About Feeds to learn more and get started. It&#x27;s free.</tabi:about_feeds>
+        <tabi:visit_the_site>Visit website</tabi:visit_the_site>
+        <tabi:recent_posts>Recent posts</tabi:recent_posts>
+        <tabi:last_updated_on>Updated on $DATE</tabi:last_updated_on>
+        <tabi:default_theme></tabi:default_theme>
+        <tabi:post_listing_date>date</tabi:post_listing_date>
+        <tabi:current_section>rants-n-rambles</tabi:current_section>
+    </tabi:metadata><link rel="extra-stylesheet" href="https://damszew.dev/skins/mint.css?h=504215cf6bc10586b487" /><title>damszew - rants-n-rambles</title>
+        <subtitle>Personal blog for sharing thoughts about different practices and patters used to create clean and efficient software</subtitle>
+    <link href="https://damszew.dev/tags/rants-n-rambles/atom.xml" rel="self" type="application/atom+xml"/>
+    <link href="https://damszew.dev/tags/rants-n-rambles/" rel="alternate" type="text/html"/>
+    <generator uri="https://www.getzola.org/">Zola</generator>
+    <updated>2025-04-10T00:00:00+00:00</updated>
+    <id>https://damszew.dev/tags/rants-n-rambles/atom.xml</id><entry xml:lang="en">
+        <title>Types don’t just describe your code. They test it too.</title>
+        <published>2025-04-10T00:00:00+00:00</published>
+        <updated>2025-04-10T00:00:00+00:00</updated>
+        <author>
+            <name>Damian Szewczyk</name>
+        </author>
+        <link rel="alternate" href="https://damszew.dev/blog/types-dont-just-describe-your-code-they-test-it-too/" type="text/html"/>
+        <id>https://damszew.dev/blog/types-dont-just-describe-your-code-they-test-it-too/</id>
+        
+            <content type="html">&lt;p&gt;Types are a superpower.&lt;&#x2F;p&gt;
+&lt;p&gt;They document your code, test your code, and unlock powerful tooling.
+In languages like Rust, the type system isn’t just a nice-to-have - it’s a core part of what enables both high performance and high reliability.
+Used well, your type checker becomes your first line of defense, catching entire classes of bugs before you even run your code.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;types-eliminate-entire-families-of-tests&quot;&gt;&lt;a class=&quot;header-anchor no-hover-padding&quot; href=&quot;#types-eliminate-entire-families-of-tests&quot; aria-label=&quot;Anchor link for: types-eliminate-entire-families-of-tests&quot;&gt;&lt;span class=&quot;link-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;a&gt;
+Types eliminate entire families of tests&lt;&#x2F;h2&gt;
+&lt;p&gt;Let’s say I have a function that returns a &lt;code&gt;String&lt;&#x2F;code&gt;. Thanks to the type system,
+I know with absolute certainty that it will &lt;em&gt;only&lt;&#x2F;em&gt; return a &lt;code&gt;String&lt;&#x2F;code&gt;. Not an &lt;code&gt;i64&lt;&#x2F;code&gt;. Not &lt;code&gt;null&lt;&#x2F;code&gt;. Not &lt;code&gt;undefined&lt;&#x2F;code&gt;. Just a &lt;code&gt;String&lt;&#x2F;code&gt;.&lt;&#x2F;p&gt;
+&lt;p&gt;That means I don’t have to write tests to check for unexpected types or null values - the compiler has already guaranteed that for me.&lt;&#x2F;p&gt;
+&lt;p&gt;Even better, if I later change that return type to &lt;code&gt;Option&amp;lt;String&amp;gt;&lt;&#x2F;code&gt;, the compiler will instantly flag every usage of that function where I forgot to handle the &lt;code&gt;None&lt;&#x2F;code&gt; case.
+It’s like having a tireless assistant showing you &lt;em&gt;exactly&lt;&#x2F;em&gt; where things need to change. A type checker just saved you from hours of debugging and subtle bugs.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;types-ensure-the-right-data-gets-in&quot;&gt;&lt;a class=&quot;header-anchor no-hover-padding&quot; href=&quot;#types-ensure-the-right-data-gets-in&quot; aria-label=&quot;Anchor link for: types-ensure-the-right-data-gets-in&quot;&gt;&lt;span class=&quot;link-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;a&gt;
+Types ensure the right data gets in&lt;&#x2F;h2&gt;
+&lt;p&gt;The same applies to inputs.&lt;&#x2F;p&gt;
+&lt;p&gt;In dynamically typed languages, you might start a function with a cascade of &lt;code&gt;if&lt;&#x2F;code&gt; statements:&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;js&quot; class=&quot;language-js z-code&quot;&gt;&lt;code class=&quot;language-js&quot; data-lang=&quot;js&quot;&gt;&lt;span class=&quot;z-source z-ts&quot;&gt;&lt;span class=&quot;z-keyword z-control z-conditional z-ts&quot;&gt;if&lt;&#x2F;span&gt; &lt;span class=&quot;z-meta z-brace z-round z-ts&quot;&gt;(&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator z-logical z-ts&quot;&gt;!&lt;&#x2F;span&gt;&lt;span class=&quot;z-variable z-other z-readwrite z-ts&quot;&gt;email&lt;&#x2F;span&gt; &lt;span class=&quot;z-keyword z-operator z-logical z-ts&quot;&gt;||&lt;&#x2F;span&gt; &lt;span class=&quot;z-keyword z-operator z-expression z-typeof z-ts&quot;&gt;typeof&lt;&#x2F;span&gt; &lt;span class=&quot;z-variable z-other z-readwrite z-ts&quot;&gt;email&lt;&#x2F;span&gt; &lt;span class=&quot;z-keyword z-operator z-comparison z-ts&quot;&gt;!==&lt;&#x2F;span&gt; &lt;span class=&quot;z-string z-quoted z-double z-ts&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-begin z-ts&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;string&lt;span class=&quot;z-punctuation z-definition z-string z-end z-ts&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-brace z-round z-ts&quot;&gt;)&lt;&#x2F;span&gt; &lt;span class=&quot;z-keyword z-control z-trycatch z-ts&quot;&gt;throw&lt;&#x2F;span&gt; &lt;span class=&quot;z-new z-expr z-ts&quot;&gt;&lt;span class=&quot;z-keyword z-operator z-new z-ts&quot;&gt;new&lt;&#x2F;span&gt; &lt;span class=&quot;z-entity z-name z-type z-ts&quot;&gt;Error&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-brace z-round z-ts&quot;&gt;(&lt;&#x2F;span&gt;&lt;span class=&quot;z-string z-quoted z-double z-ts&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-begin z-ts&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;Invalid input&lt;span class=&quot;z-punctuation z-definition z-string z-end z-ts&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-brace z-round z-ts&quot;&gt;)&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;z-keyword z-control z-conditional z-ts&quot;&gt;if&lt;&#x2F;span&gt; &lt;span class=&quot;z-meta z-brace z-round z-ts&quot;&gt;(&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator z-logical z-ts&quot;&gt;!&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-ts&quot;&gt;&lt;span class=&quot;z-variable z-other z-object z-ts&quot;&gt;email&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-accessor z-ts&quot;&gt;.&lt;&#x2F;span&gt;&lt;span class=&quot;z-entity z-name z-function z-ts&quot;&gt;includes&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-brace z-round z-ts&quot;&gt;(&lt;&#x2F;span&gt;&lt;span class=&quot;z-string z-quoted z-double z-ts&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-begin z-ts&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;@&lt;span class=&quot;z-punctuation z-definition z-string z-end z-ts&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-brace z-round z-ts&quot;&gt;)&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-brace z-round z-ts&quot;&gt;)&lt;&#x2F;span&gt; &lt;span class=&quot;z-keyword z-control z-trycatch z-ts&quot;&gt;throw&lt;&#x2F;span&gt; &lt;span class=&quot;z-new z-expr z-ts&quot;&gt;&lt;span class=&quot;z-keyword z-operator z-new z-ts&quot;&gt;new&lt;&#x2F;span&gt; &lt;span class=&quot;z-entity z-name z-type z-ts&quot;&gt;Error&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-brace z-round z-ts&quot;&gt;(&lt;&#x2F;span&gt;&lt;span class=&quot;z-string z-quoted z-double z-ts&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-begin z-ts&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;Not an email&lt;span class=&quot;z-punctuation z-definition z-string z-end z-ts&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-brace z-round z-ts&quot;&gt;)&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;In Rust or TypeScript, you don’t need to do that. You can just say:&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;rust&quot; class=&quot;language-rust z-code&quot;&gt;&lt;code class=&quot;language-rust&quot; data-lang=&quot;rust&quot;&gt;&lt;span class=&quot;z-source z-rust&quot;&gt;&lt;span class=&quot;z-meta z-function z-rust&quot;&gt;&lt;span class=&quot;z-meta z-function z-rust&quot;&gt;&lt;span class=&quot;z-storage z-type z-function z-rust&quot;&gt;fn&lt;&#x2F;span&gt; &lt;&#x2F;span&gt;&lt;span class=&quot;z-entity z-name z-function z-rust&quot;&gt;send_email&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function z-rust&quot;&gt;&lt;span class=&quot;z-meta z-function z-parameters z-rust&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-parameters z-begin z-rust&quot;&gt;(&lt;&#x2F;span&gt;&lt;span class=&quot;z-variable z-parameter z-rust&quot;&gt;to&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-separator z-rust&quot;&gt;:&lt;&#x2F;span&gt; Email&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function z-rust&quot;&gt;&lt;span class=&quot;z-meta z-function z-parameters z-rust&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-parameters z-end z-rust&quot;&gt;)&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function z-rust&quot;&gt; &lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function z-rust&quot;&gt;&lt;span class=&quot;z-meta z-block z-rust&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-block z-begin z-rust&quot;&gt;{&lt;&#x2F;span&gt; &lt;span class=&quot;z-keyword z-operator z-range z-rust&quot;&gt;...&lt;&#x2F;span&gt; &lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-block z-rust&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-block z-end z-rust&quot;&gt;}&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;And boom - your function &lt;em&gt;only&lt;&#x2F;em&gt; gets called if someone passes in a properly constructed &lt;code&gt;Email&lt;&#x2F;code&gt; value.
+No ifs, no maybes. The type has done the heavy lifting for you.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;types-help-you-dry-things-out&quot;&gt;&lt;a class=&quot;header-anchor no-hover-padding&quot; href=&quot;#types-help-you-dry-things-out&quot; aria-label=&quot;Anchor link for: types-help-you-dry-things-out&quot;&gt;&lt;span class=&quot;link-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;a&gt;
+Types help you DRY things out&lt;&#x2F;h2&gt;
+&lt;p&gt;Let’s stick with that &lt;code&gt;Email&lt;&#x2F;code&gt; type.&lt;&#x2F;p&gt;
+&lt;p&gt;Somewhere in your codebase, you’ll need to convert from a raw string to an &lt;code&gt;Email&lt;&#x2F;code&gt;.
+In Rust, you might implement this via &lt;code&gt;TryFrom&amp;lt;String&amp;gt;&lt;&#x2F;code&gt; for your &lt;code&gt;Email&lt;&#x2F;code&gt; type. Then you test that one implementation:&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;rust&quot; class=&quot;language-rust z-code&quot;&gt;&lt;code class=&quot;language-rust&quot; data-lang=&quot;rust&quot;&gt;&lt;span class=&quot;z-source z-rust&quot;&gt;&lt;span class=&quot;z-meta z-impl z-rust&quot;&gt;&lt;span class=&quot;z-storage z-type z-impl z-rust&quot;&gt;impl&lt;&#x2F;span&gt; &lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-impl z-rust&quot;&gt;&lt;span class=&quot;z-meta z-generic z-rust&quot;&gt;TryFrom&lt;span class=&quot;z-punctuation z-definition z-generic z-begin z-rust&quot;&gt;&amp;lt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-support z-type z-rust&quot;&gt;String&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-definition z-generic z-end z-rust&quot;&gt;&amp;gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt; &lt;span class=&quot;z-keyword z-other z-rust&quot;&gt;for&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-impl z-rust&quot;&gt; &lt;span class=&quot;z-entity z-name z-impl z-rust&quot;&gt;Email&lt;&#x2F;span&gt; &lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-impl z-rust&quot;&gt;&lt;span class=&quot;z-meta z-block z-rust&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-block z-begin z-rust&quot;&gt;{&lt;&#x2F;span&gt; &lt;span class=&quot;z-keyword z-operator z-range z-rust&quot;&gt;...&lt;&#x2F;span&gt; &lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-block z-rust&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-block z-end z-rust&quot;&gt;}&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Now, anywhere else in your code, you can assume that if a value is of type &lt;code&gt;Email&lt;&#x2F;code&gt;, it’s already been validated.
+You don’t need to re-test email validation in every single place you use it.&lt;&#x2F;p&gt;
+&lt;p&gt;One test. One type. Confidence everywhere.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;types-are-mandatory-tests-are-optional&quot;&gt;&lt;a class=&quot;header-anchor no-hover-padding&quot; href=&quot;#types-are-mandatory-tests-are-optional&quot; aria-label=&quot;Anchor link for: types-are-mandatory-tests-are-optional&quot;&gt;&lt;span class=&quot;link-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;a&gt;
+Types are mandatory, Tests are optional&lt;&#x2F;h2&gt;
+&lt;p&gt;Here’s another killer feature of types: you &lt;em&gt;can’t skip them&lt;&#x2F;em&gt;.&lt;&#x2F;p&gt;
+&lt;p&gt;Tests are great - but they’re also voluntary. You can comment them out, forget to run them, or skip them in a hurry.
+The compiler? It doesn’t give you a choice. If your code violates type constraints, it simply won’t build.&lt;&#x2F;p&gt;
+&lt;p&gt;This is especially valuable in teams. You can bring in new contributors - even junior developers - and feel confident they won’t accidentally break something fundamental.
+Types are always watching.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;tests-still-matter-especially-for-business-logic&quot;&gt;&lt;a class=&quot;header-anchor no-hover-padding&quot; href=&quot;#tests-still-matter-especially-for-business-logic&quot; aria-label=&quot;Anchor link for: tests-still-matter-especially-for-business-logic&quot;&gt;&lt;span class=&quot;link-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;a&gt;
+Tests still matter - especially for business logic&lt;&#x2F;h2&gt;
+&lt;p&gt;All that said, types don’t test &lt;em&gt;everything&lt;&#x2F;em&gt;.&lt;&#x2F;p&gt;
+&lt;p&gt;They won’t tell you whether a discount was correctly applied to a shopping cart, or whether your sorting algorithm really works as expected.
+That’s where tests come in - particularly when verifying business logic.&lt;&#x2F;p&gt;
+&lt;p&gt;But once you’ve tested that your &lt;code&gt;Email&lt;&#x2F;code&gt; or &lt;code&gt;UserId&lt;&#x2F;code&gt; type behaves correctly, you can skip testing that same logic everywhere else.
+Cover your types with tests, and the rest of the system benefits.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;conclusion&quot;&gt;&lt;a class=&quot;header-anchor no-hover-padding&quot; href=&quot;#conclusion&quot; aria-label=&quot;Anchor link for: conclusion&quot;&gt;&lt;span class=&quot;link-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;a&gt;
+Conclusion&lt;&#x2F;h2&gt;
+&lt;p&gt;Types can drastically reduce the number of tests you need. But tests still matter.&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;Cover your &lt;em&gt;types&lt;&#x2F;em&gt; with tests.&lt;&#x2F;li&gt;
+&lt;li&gt;Let your &lt;em&gt;types&lt;&#x2F;em&gt; protect your other code.&lt;&#x2F;li&gt;
+&lt;li&gt;Understand that &lt;strong&gt;TDD cannot replace the compiler&lt;&#x2F;strong&gt;, and the &lt;strong&gt;compiler cannot replace TDD&lt;&#x2F;strong&gt;.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;The same way tests don’t replace all your other tools - &lt;a href=&quot;https:&#x2F;&#x2F;damszew.dev&#x2F;blog&#x2F;tdd-is-a-single-tool-not-a-whole-toolbox&#x2F;&quot;&gt;as I wrote before&lt;&#x2F;a&gt; - types are another powerful tool in your toolbox.&lt;&#x2F;p&gt;
+&lt;p&gt;As I’ve found, when used together, types and tests work wonders - giving you the best of both worlds: speed, safety, and confidence.&lt;&#x2F;p&gt;
+&lt;hr &#x2F;&gt;
+&lt;p&gt;&lt;strong&gt;Types don’t &lt;em&gt;just&lt;&#x2F;em&gt; describe your code. They &lt;em&gt;test&lt;&#x2F;em&gt; it too.&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+</content>
+        </entry><entry xml:lang="en">
+        <title>Balancing Unit and Integration Tests: How Project Maturity Shapes the Ratio</title>
+        <published>2025-03-05T00:00:00+00:00</published>
+        <updated>2025-03-05T00:00:00+00:00</updated>
+        <author>
+            <name>Damian Szewczyk</name>
+        </author>
+        <link rel="alternate" href="https://damszew.dev/blog/balanding-unit-and-integration-tests-how-project-matiruty-shapes-the-ratio/" type="text/html"/>
+        <id>https://damszew.dev/blog/balanding-unit-and-integration-tests-how-project-matiruty-shapes-the-ratio/</id>
+        
+            <content type="html">&lt;p&gt;Recently, I stumbled upon two seemingly contradictory viewpoints regarding testing:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Predrag Gruevski’s talk&lt;&#x2F;strong&gt; &lt;a href=&quot;https:&#x2F;&#x2F;youtu.be&#x2F;3EFue8PDyic?si=70ymjZObizp3_GpN&amp;amp;t=924&quot;&gt;“Build bigger in less time: code testing beyond the basics”&lt;&#x2F;a&gt; at EuroRust, which advocates for unit tests due to their speed and reliability.&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;Carson Gross’s article&lt;&#x2F;strong&gt; &lt;a href=&quot;https:&#x2F;&#x2F;htmx.org&#x2F;essays&#x2F;codin-dirty&#x2F;#i-prefer-integration-tests-to-unit-tests&quot;&gt;“Codin’ Dirty”&lt;&#x2F;a&gt;, which favors integration tests for their robustness and lower maintenance costs.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;I find myself agreeing with both perspectives. There are times when unit tests feel too isolated to provide meaningful assurance, and other times when integration tests slow down development to a frustrating degree. The key, I believe, lies in understanding how a project’s maturity influences the ideal balance between these two types of tests.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;the-value-of-testing-and-my-early-experience&quot;&gt;&lt;a class=&quot;header-anchor no-hover-padding&quot; href=&quot;#the-value-of-testing-and-my-early-experience&quot; aria-label=&quot;Anchor link for: the-value-of-testing-and-my-early-experience&quot;&gt;&lt;span class=&quot;link-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;a&gt;
+The Value of Testing and My Early Experience&lt;&#x2F;h2&gt;
+&lt;p&gt;I was fortunate to grasp the value of testing early in my career. My first real-world project had a well-balanced test suite with unit, integration, and end-to-end (E2E) tests, thanks to experienced developers practicing TDD. This provided a solid foundation, helping me see both the strengths and weaknesses of different testing strategies.&lt;&#x2F;p&gt;
+&lt;p&gt;The fundamental trade-off between unit and integration tests is well known:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Unit tests&lt;&#x2F;strong&gt; are fast but cover a limited scope.&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;Integration tests&lt;&#x2F;strong&gt; are slower but provide broader coverage with a single test.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;I have seen projects suffer from an overload of slow integration tests, just as I have seen projects with so many heavily mocked unit tests that they provided little confidence. The question is: how do teams end up in these situations, and how can they avoid it?&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;the-root-cause-project-maturity&quot;&gt;&lt;a class=&quot;header-anchor no-hover-padding&quot; href=&quot;#the-root-cause-project-maturity&quot; aria-label=&quot;Anchor link for: the-root-cause-project-maturity&quot;&gt;&lt;span class=&quot;link-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;a&gt;
+The Root Cause: Project Maturity&lt;&#x2F;h2&gt;
+&lt;p&gt;We often discuss when to use unit vs. integration tests from a technical standpoint, but we rarely consider how a project’s maturity influences this decision.&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;early-stage-projects-favor-integration-tests&quot;&gt;&lt;a class=&quot;header-anchor no-hover-padding&quot; href=&quot;#early-stage-projects-favor-integration-tests&quot; aria-label=&quot;Anchor link for: early-stage-projects-favor-integration-tests&quot;&gt;&lt;span class=&quot;link-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;a&gt;
+Early-Stage Projects: Favor Integration Tests&lt;&#x2F;h3&gt;
+&lt;p&gt;When working at a startup or on an early-stage project, the codebase is constantly evolving. Here, integration tests shine:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;They cover the entire stack via the API, reducing the need to rewrite tests as the internal implementation changes.&lt;&#x2F;li&gt;
+&lt;li&gt;Maintenance cost is lower because fewer tests need to be updated when refactoring.&lt;&#x2F;li&gt;
+&lt;li&gt;Execution time is manageable because the overall test suite remains small.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;In this context, the trade-off of slower execution times is acceptable because the total runtime remains reasonable—say, under 30 seconds.&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;mature-projects-favor-unit-tests&quot;&gt;&lt;a class=&quot;header-anchor no-hover-padding&quot; href=&quot;#mature-projects-favor-unit-tests&quot; aria-label=&quot;Anchor link for: mature-projects-favor-unit-tests&quot;&gt;&lt;span class=&quot;link-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;a&gt;
+Mature Projects: Favor Unit Tests&lt;&#x2F;h3&gt;
+&lt;p&gt;For larger, more mature systems—especially in big tech—unit tests become more valuable:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;The product may be too large to spin up locally, making full integration tests impractical.&lt;&#x2F;li&gt;
+&lt;li&gt;Interfaces and abstractions have stabilized, making unit tests more reliable.&lt;&#x2F;li&gt;
+&lt;li&gt;A full test suite could take 30 minutes or more to run, so faster unit tests improve feedback loops.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;In such cases, writing unit tests against well-defined abstractions provides sufficient confidence while keeping test execution times low. However, occasional integration tests remain necessary to ensure everything works together as expected.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;common-pitfalls-and-how-to-avoid-them&quot;&gt;&lt;a class=&quot;header-anchor no-hover-padding&quot; href=&quot;#common-pitfalls-and-how-to-avoid-them&quot; aria-label=&quot;Anchor link for: common-pitfalls-and-how-to-avoid-them&quot;&gt;&lt;span class=&quot;link-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;a&gt;
+Common Pitfalls and How to Avoid Them&lt;&#x2F;h2&gt;
+&lt;p&gt;A poorly balanced test suite—whether overloaded with slow integration tests or brittle, over-mocked unit tests—is a symptom, not the root problem. I’ve seen two common scenarios leading to this imbalance:&lt;&#x2F;p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;The project outgrows its integration-heavy test suite.&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;Initially, integration tests worked well.&lt;&#x2F;li&gt;
+&lt;li&gt;Over time, new tests were added without considering the cost.&lt;&#x2F;li&gt;
+&lt;li&gt;The real solution was to refactor: improve abstractions, convert some integration tests to unit tests, and optimize the test suite.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;The project was over-engineered with excessive unit tests.&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;A culture of writing fine-grained unit tests led to high coupling and difficulty in refactoring.&lt;&#x2F;li&gt;
+&lt;li&gt;Integration tests were neglected, limiting confidence in how components worked together.&lt;&#x2F;li&gt;
+&lt;li&gt;The solution was to introduce more integration tests while relaxing rigid unit test practices.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;p&gt;Both cases highlight the need to adapt testing strategies as a project evolves.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;conclusion-finding-the-right-balance&quot;&gt;&lt;a class=&quot;header-anchor no-hover-padding&quot; href=&quot;#conclusion-finding-the-right-balance&quot; aria-label=&quot;Anchor link for: conclusion-finding-the-right-balance&quot;&gt;&lt;span class=&quot;link-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;a&gt;
+Conclusion: Finding the Right Balance&lt;&#x2F;h2&gt;
+&lt;p&gt;As always, the answer is &lt;strong&gt;“it depends.”&lt;&#x2F;strong&gt; The ratio of unit to integration tests should adapt to a project’s maturity:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Early-stage projects:&lt;&#x2F;strong&gt; Favor integration tests to cover broad changes while keeping maintenance low. Use unit tests selectively for complex logic.&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;strong&gt;Mature projects:&lt;&#x2F;strong&gt; Favor unit tests to ensure fast execution and modular reliability. Use integration tests strategically to validate system behavior.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;By staying mindful of this spectrum, teams can avoid the extremes and build test suites that evolve alongside their projects, providing confidence without unnecessary overhead.&lt;&#x2F;p&gt;
+</content>
+        </entry><entry xml:lang="en">
+        <title>TDD Is Just a Single Tool - Not a Whole Toolbox</title>
+        <published>2024-09-23T00:00:00+00:00</published>
+        <updated>2024-09-23T00:00:00+00:00</updated>
+        <author>
+            <name>Damian Szewczyk</name>
+        </author>
+        <link rel="alternate" href="https://damszew.dev/blog/tdd-is-a-single-tool-not-a-whole-toolbox/" type="text/html"/>
+        <id>https://damszew.dev/blog/tdd-is-a-single-tool-not-a-whole-toolbox/</id>
+        
+            <content type="html">&lt;p&gt;Today, I’m a much more pragmatic software developer than I used to be.
+When it comes to testing, I’m all about finding the balance:
+having enough tests to feel safe when refactoring or delivering new features,
+but not so many that they slow down development.&lt;&#x2F;p&gt;
+&lt;p&gt;I’ll be honest, though - there was a time when I took the TDD approach way, way too far.
+I was ready to die for Uncle Bob’s “Three Rules of TDD”:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;“Write production code only to pass a failing unit test.”&lt;&#x2F;li&gt;
+&lt;li&gt;“Write no more of a unit test than is sufficient to fail (compilation failures are failures).”&lt;&#x2F;li&gt;
+&lt;li&gt;“Write no more production code than necessary to pass the one failing unit test.”&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;Now, from experience, I can safely say that while those rules sound great in theory,
+they aren’t all that practical in the real world.
+But this blog post isn’t about critiquing TDD - I still enjoy a healthy red-green-refactor cycle.
+Instead, &lt;strong&gt;I want to share MY &lt;em&gt;(practical)&lt;&#x2F;em&gt; approach to TDD, or more broadly, to automated testing.&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;database-in-unit-tests&quot;&gt;&lt;a class=&quot;header-anchor no-hover-padding&quot; href=&quot;#database-in-unit-tests&quot; aria-label=&quot;Anchor link for: database-in-unit-tests&quot;&gt;&lt;span class=&quot;link-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;a&gt;
+Database in Unit Tests&lt;&#x2F;h2&gt;
+&lt;p&gt;First of all, let’s get this out of the way: I use a database in unit tests.
+&lt;a href=&quot;https:&#x2F;&#x2F;dhh.dk&#x2F;2014&#x2F;slow-database-test-fallacy.html&quot;&gt;A pretty old article from DHH&lt;&#x2F;a&gt;
+convinced me to try this out, and I’m glad I did. Locally hosted databases are fast,
+and most database libraries already provide the necessary infrastructure, so this should be a no-brainer.
+For example, Rust’s SQLx provides a macro that:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;Automatically sets up an isolated database for each test,&lt;&#x2F;li&gt;
+&lt;li&gt;Runs migrations,&lt;&#x2F;li&gt;
+&lt;li&gt;Removes databases after successful tests,&lt;&#x2F;li&gt;
+&lt;li&gt;And keeps the failed ones around for debugging.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;It’s so good that I’ve found myself replacing more and more end-to-end tests
+with this kind of setup. These tests are easier to write, maintain, and debug.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;em&gt;Some might argue these are “integration tests,” but since there
+are so many conflicting definitions of that term, I just avoid it altogether.&lt;&#x2F;em&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;The important thing here is that using a database in unit tests is easy&lt;&#x2F;strong&gt; and lets you test things
+that would normally be reserved for end-to-end tests.
+In other words, it replaces expensive, slow-to-run tests with cheaper and faster unit tests.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;say-no-to-worthless-tests&quot;&gt;&lt;a class=&quot;header-anchor no-hover-padding&quot; href=&quot;#say-no-to-worthless-tests&quot; aria-label=&quot;Anchor link for: say-no-to-worthless-tests&quot;&gt;&lt;span class=&quot;link-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;a&gt;
+Say No to Worthless Tests&lt;&#x2F;h2&gt;
+&lt;p&gt;Another thing I “discovered” is how useful a strong type system is.
+Once I learned how to leverage it, I couldn’t stop.
+If I create a function that accepts an &lt;code&gt;Email&lt;&#x2F;code&gt; type,
+&lt;strong&gt;I don’t need to test what happens when &lt;code&gt;null&lt;&#x2F;code&gt; or a random &lt;code&gt;String&lt;&#x2F;code&gt; is passed.&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Not only does this save me from writing tests to cover simple cases,
+but it also pushes me toward the &lt;a href=&quot;https:&#x2F;&#x2F;lexi-lambda.github.io&#x2F;blog&#x2F;2019&#x2F;11&#x2F;05&#x2F;parse-don-t-validate&#x2F;&quot;&gt;“parse, not validate”&lt;&#x2F;a&gt; approach.&lt;&#x2F;p&gt;
+&lt;p&gt;Before my function can even be called, the &lt;code&gt;Email&lt;&#x2F;code&gt; type
+needs to be constructed - or errors need to be handled if it can’t be.
+&lt;strong&gt;This moves error-handling logic higher up the stack
+and keeps the core domain logic focused on business problems.&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Regarding mocks, I only mock external stuff and ideally do so &lt;strong&gt;without&lt;&#x2F;strong&gt; dependency injection.
+When I need to communicate with a third-party API,
+I spin up a mock HTTP server to fake it.
+This covers 99% of my “mocking” needs, because most of the time,
+I try to sidestep the problem entirely.
+By borrowing ideas from functional programming, I push “impure” functions to the edges of the system,
+often creating an &lt;a href=&quot;https:&#x2F;&#x2F;blog.ploeh.dk&#x2F;2020&#x2F;03&#x2F;02&#x2F;impureim-sandwich&#x2F;&quot;&gt;“impureim sandwich”&lt;&#x2F;a&gt;,
+leaving the domain logic pure &lt;em&gt;(free of side effects)&lt;&#x2F;em&gt;.
+This way, I can easily unit test the hell out of it.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;conclusions&quot;&gt;&lt;a class=&quot;header-anchor no-hover-padding&quot; href=&quot;#conclusions&quot; aria-label=&quot;Anchor link for: conclusions&quot;&gt;&lt;span class=&quot;link-icon&quot; aria-hidden=&quot;true&quot;&gt;&lt;&#x2F;span&gt;&lt;&#x2F;a&gt;
+Conclusions&lt;&#x2F;h2&gt;
+&lt;p&gt;It’s not easy, but it’s simple.&lt;&#x2F;p&gt;
+&lt;p&gt;A less idealistic approach to automated testing and TDD,
+combined with other tools like a strong type system,
+really opened the door for me to building great software.&lt;&#x2F;p&gt;
+&lt;p&gt;The code is readable, the compiler ensures no dumb bugs slip through,
+and most logic is covered by very quick-to-run unit tests - even though they involve database access.
+&lt;strong&gt;And that’s enough in most cases - covering anything else just isn’t worth the cost.&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;I’ve learned this the hard way.
+I used to believe that with strict &lt;em&gt;(almost radical)&lt;&#x2F;em&gt; TDD,
+I could turn my brain off and let the red-green-refactor process guide me to salvation.
+But in reality, there’s no single tool that can replace good engineering.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;Just like chefs in a kitchen:
+no matter how great your pans are, it’s still better to make soup in a pot.&lt;&#x2F;strong&gt;
+TDD is just a single tool in the toolbox, and great engineering is knowing when to use that tool.&lt;&#x2F;p&gt;
+</content>
+        </entry>
+</feed>

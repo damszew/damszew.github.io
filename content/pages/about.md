@@ -1,21 +1,26 @@
 +++
-title = "About"
+title = "About me"
 template = "info-page.html"
 path = "about"
 +++
 
-Experienced Rust Developer with a strong background in C++ and an interest in drones.
+I’m a **Rust developer** _(and proud of it!)_ with several years of experience - though I got my start wrangling **C++** for a couple of years before I saw the light.
+I’m hooked on backend development, especially when it comes to building fast, reliable systems for the cloud and web.
 
-I'm a software developer with a background in C++, though these days my focus is entirely on Rust.
-I've worked on a range of projects, from building backend systems to developing real-time data streaming solutions,
-with experience spanning embedded systems in telecom to large-scale monitoring systems for critical infrastructure.
+Over the years I've worked on a range of projects:
 
-In my free time, I’m always experimenting - whether it's coding pet projects to explore concepts
-or diving into new programming challenges just for fun.
-I love pushing the boundaries of what’s possible with tech
-and often share my thoughts on software development through my blog.
+- **Embedded Linux devices** - low-level, hands-on systems work
+- **High-throughput, low-latency microservices** - powering complex enterprise backends
+- **Small monolithic backends** - collaborating directly with clients to shape and deliver custom solutions
 
-Oh, and I like to hit the gym too!
+When I’m not coding, you’ll probably find me:
+
+- At the **gym** or on the **tennis court**
+- **Tending my lawn** like a suburban dad
+- **Tinkering** with code and exploring programming languages just for fun
+- Keeping up with the latest **tech news** and, yes, the _occasional_ **programming drama**
+
+This blog is where I share some of my thoughts, experiments, and opinions _(whether anyone asked for them or not)_.
 
 ---
 
@@ -27,3 +32,4 @@ List of articles that had great impact on my software development
 - ["Test-induced design damage" by David Heinemeier Hansson](https://dhh.dk/2014/test-induced-design-damage.html)
 - ["Slow database test fallacy" by David Heinemeier Hansson](https://dhh.dk/2014/slow-database-test-fallacy.html)
 - ["Impureim sandwich" by Mark Seemann](https://blog.ploeh.dk/2020/03/02/impureim-sandwich/)
+- ["Code is a liability" by Lee Meichin](https://www.leemeichin.com/posts/code-is-a-liability.html)

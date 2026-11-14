@@ -1,2 +1,18 @@
-public/
+# build output
+dist/
+
+# generated types
+.astro/
+
+# dependencies
+node_modules/
+.pnpm-store
+
+# pagefind index copied in by the build
+public/pagefind
+
+# devenv / direnv
+.devenv*
+devenv.local.nix
 .direnv
+.pre-commit-config.yaml

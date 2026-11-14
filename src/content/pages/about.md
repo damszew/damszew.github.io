@@ -14,7 +14,7 @@ Over the years I've worked on a range of projects:
 
 When I’m not coding, you’ll probably find me:
 
-- Collecting **running** kilometers, or hitting the **gym**
+- **Running** or **lifting weights** - and I'm proud to call myself a **marathon finisher**
 - **Tending my lawn** like a suburban dad
 - **Tinkering** with code and exploring programming languages just for fun
 - Keeping up with the latest **tech news** and, yes, the _occasional_ **programming drama**
